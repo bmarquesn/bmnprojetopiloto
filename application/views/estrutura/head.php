@@ -1,6 +1,6 @@
 <title>.: Bruno Marques Nogueira - Gerente - Desenvolvedor - Projetos - Web :.</title>
 <?php
-//for search engines
+//to search engines
 $meta = array(
 	array('name' => 'X-UA-Compatible', 'content' => 'IE=edge,chrome=1', 'type' => 'equiv'),
 	array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1'),
