@@ -52,20 +52,13 @@
 				<span class="icon-bar"></span>
 			</button>
 			<?php } ?>
-			<a class="navbar-brand" href="<?php echo base_url().'sistema'; ?>">BrunoNoMar</a>
+			<a class="navbar-brand" href="<?php echo base_url().'sistema'; ?>">BMN</a>
 		</div>
 		<?php if(isset($_SESSION['admin']) && !empty($_SESSION['admin'])) { ?>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="nav navbar-nav">
-				<li<?php if(isset($noticias)){echo ' class="active"';}?>><a href="<?php echo base_url().'noticias'; ?>">Notícias</a></li>
-				<li<?php if(isset($agenda)){echo ' class="active"';}?>><a href="<?php echo base_url().'agenda'; ?>">Agenda</a></li>
-				<li<?php if(isset($transmissao_ao_vivo)){echo ' class="active"';}?>><a href="<?php echo base_url().'transmissao_ao_vivo'; ?>">Transmissão ao Vivo</a></li>
-				<li<?php if(isset($sugestoes)){echo ' class="active"';}?>><a href="<?php echo base_url().'sugestoes'; ?>">Sugestões</a></li>
-				<li<?php if(isset($biografia)){echo ' class="active"';}?>><a href="<?php echo base_url().'biografia'; ?>">Biografia</a></li>
-				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'usuario'; ?>">Usuários</a></li>
-				<li<?php if(isset($push_notifications)){echo ' class="active"';}?>><a href="<?php echo base_url().'push_notifications'; ?>">Enviar Mensagem</a></li>
-				<li<?php if(isset($video_transmissao)){echo ' class="active"';}?>><a href="<?php echo base_url().'video_transmissao'; ?>">Vídeo Transmissão</a></li>
-				<li<?php if(isset($id_playlist)){echo ' class="active"';}?>><a href="<?php echo base_url().'playlist_id'; ?>">Id da Playlist</a></li>
+				<li<?php if(isset($prospects)){echo ' class="active"';}?>><a href="<?php echo base_url().'prospects'; ?>">Prospects</a></li>
+				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'usuarios'; ?>">Usuários</a></li>
 			</ul>
 			<div style="position:relative;left:10px;"><a href="<?php echo base_url().'sistema/sair'; ?>" class="btn btn-danger" onclick="return confirm('Deseja mesmo sair do sistema?')">Sair</a></div>
 		</div>
