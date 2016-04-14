@@ -69,10 +69,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container">
 	<h1>Welcome to CodeIgniter! with Controllers in Subfolder</h1>
 	<div id="body">
-		<p>A default_controller nao pode estar em sub-dirétorio mas o resto sim.</p>
+		<p>A ['default_controller'] nao pode estar em sub-dirétorio mas o resto sim.</p>
 		<p>Conforme:<br /><a href="https://github.com/bcit-ci/CodeIgniter/issues/2849" target="_blank">https://github.com/bcit-ci/CodeIgniter/issues/2849</a><br /><a href="https://www.google.com.br/search?q=utilizar+pastas+pasta+controllers+codeignieter&ie=utf-8&oe=utf-8&gws_rd=cr&ei=wbIPV_ukGoW5wAShp4LoCg#q=codeigniter%20controllers%20in%20subfolders%20not%20use%20routes" target="_blank">https://www.google.com.br/search?q=utilizar+pastas+pasta+controllers+codeignieter&ie=utf-8&oe=utf-8&gws_rd=cr&ei=wbIPV_ukGoW5wAShp4LoCg#q=codeigniter%20controllers%20in%20subfolders%20not%20use%20routes</a></p>
 		<code>application/controllers/main/Teste.php</code>
-		<p><a href="">Voltar</a></p>
+		<p><?php echo base_url(); ?></p>
+		<p><a href="<?php echo base_url().'welcome'; ?>">Voltar</a></p>
 	</div>
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>

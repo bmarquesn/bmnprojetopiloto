@@ -23,7 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+if($_SERVER['SERVER_NAME'] === "localhost") {
+	define("SERVIDOR", "local");
+	$config['base_url'] = 'http://localhost:70/bmnprojetopiloto/';
+} else {
+	define("SERVIDOR", "remoto");
+	$config['base_url'] = 'http://localhost:70/bmnprojetopiloto/';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +41,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
