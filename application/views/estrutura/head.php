@@ -25,6 +25,8 @@ echo link_tag('assets/css/bootstrap/navbar-fixed-top.css');
 echo link_tag('assets/css/jquery/jquery-ui.min.css');
 echo link_tag('assets/css/jquery/jquery-ui.structure.min.css');
 echo link_tag('assets/css/jquery/jquery-ui-timepicker-addon.css');
+echo link_tag('assets/css/prospects.css');
+echo link_tag('assets/css/menu_topo.css');
 if(isset($link_css) && !empty($link_css)) {
 	foreach($link_css as $key => $value) {
 		echo link_tag($value);
