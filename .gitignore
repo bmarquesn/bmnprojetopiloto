@@ -47,7 +47,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 assets/images/
 assets/audios/
 assets/docs/
-system/
 application/libraries/mPDF
 assets/css/colorpicker
 assets/css/bootstrap
