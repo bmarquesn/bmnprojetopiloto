@@ -66,25 +66,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
-
+	<h1>Welcome to CodeIgniter! with Controllers in Subfolder</h1>
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
-		<p><a href="main/teste">Teste Controllers in Sub-folders</a></p>
+		<p>A default_controller nao pode estar em sub-dirétorio mas o resto sim.</p>
+		<p>Conforme:<br /><a href="https://github.com/bcit-ci/CodeIgniter/issues/2849" target="_blank">https://github.com/bcit-ci/CodeIgniter/issues/2849</a><br /><a href="https://www.google.com.br/search?q=utilizar+pastas+pasta+controllers+codeignieter&ie=utf-8&oe=utf-8&gws_rd=cr&ei=wbIPV_ukGoW5wAShp4LoCg#q=codeigniter%20controllers%20in%20subfolders%20not%20use%20routes" target="_blank">https://www.google.com.br/search?q=utilizar+pastas+pasta+controllers+codeignieter&ie=utf-8&oe=utf-8&gws_rd=cr&ei=wbIPV_ukGoW5wAShp4LoCg#q=codeigniter%20controllers%20in%20subfolders%20not%20use%20routes</a></p>
+		<code>application/controllers/main/Teste.php</code>
+		<p><a href="">Voltar</a></p>
 	</div>
-
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
-
 </body>
 </html>
