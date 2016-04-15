@@ -27,6 +27,9 @@ input[readonly] {
 #loader_envio {background:url('../img/loader_bar.gif');width:30%;height:20px;margin:10px auto;border:#ccc 1px solid;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;}
 #loader_envio .loader {background:#c00;width:10%;height:18px;display:block;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;opacity:0.4;filter:alpha(opacity=40);}
 
+table td.col-md-1 {text-align:center;}
+table tfoot tr {background:#fff !important;}
+
 /*diversos*/
 input[type="text"]:focus,input[type="password"]:focus,textarea:focus {background:#FFFFBF;}
 form input[type="text"], form input[type="password"], textarea {width:100%;}

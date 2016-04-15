@@ -1,6 +1,8 @@
 <?php echo doctype('html5'); ?>
 <html lang="pt-br">
-	<?php require('estrutura/head.php'); ?>
+	<head>
+		<?php require_once(APPPATH.'views/estrutura/head.php'); ?>
+	</head>
 	<body>
 		<div class="container">
 			<div class="row">

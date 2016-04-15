@@ -42,12 +42,15 @@ $(function() {
 			},
 			type: 'numeric'
 		});
-		$("#noticias").tablesorter({
+		/*$("#usuarios").tablesorter({
 			headers:{
 				1:{sorter:'datetime'}
-				,2:{sorter:false}
+				,4:{sorter:false}
 			},
 			dateFormat:'dd/mm/yyyy H:i'
+		});*/
+		$("#usuarios").tablesorter({
+			headers:{4:{sorter:false}}
 		});
 	}
 });
@@ -86,9 +89,8 @@ function completed(field, name) {
 }
 
 //Function that checks if valid email
-function email(field, name) {
+function validEmail(field, name) {
     var value_field = $(field).val();
-    
     if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value_field)) || (!value_field)) {
         return true;
     } else {
@@ -99,26 +101,6 @@ function email(field, name) {
     }
 }
 
-//-------------------------------------------------------------
-function validar_insercao_prospect() {
-	var ok = false;
-	
-	if(!completed($('#nome'),'Nome')) {
-		ok = false;
-	} else if(!completed($('#setor'),'Setor')) {
-		ok = false;
-	} else if(!completed($('#contatos'),'Contatos')) {
-		ok = false;
-	} else if(!completed($('#acao'),'Ação')) {
-		ok = false;
-	} else if(!completed($('#dataProximaAcao'),'Data Próxima Ação')) {
-		ok = false;
-	} else {
-		ok = true;
-	}
-	
-	return ok;
-}
 /* Brazilian initialisation for the jQuery UI date picker plugin. */
 /* Written by Leonildo Costa Silva (leocsilva@gmail.com). */
 (function( factory ) {

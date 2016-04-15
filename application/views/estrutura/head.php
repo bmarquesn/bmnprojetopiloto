@@ -32,6 +32,10 @@ if(isset($link_css) && !empty($link_css)) {
 		echo link_tag($value);
 	}
 }
+if(isset($colorpicker) && !empty($colorpicker)) {
+	echo link_tag('assets/css/colorpicker/colorpicker.css');
+	//echo link_tag('assets/css/colorpicker/layout.css');
+}
 ?>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
