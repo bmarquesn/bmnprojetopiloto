@@ -17,8 +17,8 @@
 			<ul class="nav navbar-nav">
 				<li<?php if(isset($curriculo)){echo ' class="active"';}?>><a href="<?php echo base_url().'curriculo'; ?>">Currículo</a></li>
 				<li<?php if(isset($prospects)){echo ' class="active"';}?>><a href="<?php echo base_url().'prospects'; ?>">Prospects</a></li>
-				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'usuarios'; ?>">Usuários</a></li>
-				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'historico_acoes'; ?>">Logs</a></li>
+				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'admin/usuarios'; ?>">Usuários</a></li>
+				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'admin/historico_acoes'; ?>">Logs</a></li>
 				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'documentacao_phpdoc'; ?>">PHPDoc</a></li>
 				<li<?php if(isset($usuarios)){echo ' class="active"';}?>><a href="<?php echo base_url().'documentacao_phpdoc'; ?>">Procedure</a></li>
 			</ul>

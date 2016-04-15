@@ -25,12 +25,12 @@
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Usuários</h2>
 					<p>Lista de Usuários que poderão acessar o sistema</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'usuarios'; ?>">Usuários</a></p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'admin/usuarios'; ?>">Usuários</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Logs</h2>
 					<p>Histórico de ações no sistema</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'historico_acoes'; ?>">Histórico</a></p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'admin/historico_acoes'; ?>">Histórico</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>PHPDoc</h2>

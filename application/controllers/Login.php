@@ -16,6 +16,7 @@
 require_once('admin/Admin.php');
 
 class Login extends Admin {
+	
 	public function index($retorno = null) {
 		if(!empty($retorno)) {
 			$data['retorno'] = ucfirst(str_replace('_', ' ', $retorno));
