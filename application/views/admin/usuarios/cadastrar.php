@@ -75,7 +75,7 @@
 				email.focus();
 				valido = false;
 			}else if(id.val()==''&&senha.val()==''){
-				$('p.alert').find('span').text('O campo SENHA deve ser um email válido');
+				$('p.alert').find('span').text('O campo SENHA deve ser preenchido');
 				$('p.alert').show('fast');
 				senha.focus();
 				valido = false;

@@ -30,8 +30,6 @@ class Comuns_model extends CI_Model {
 			} else {
 				$this->db->order_by($table.".".$order, "DESC");
 			}
-			
-			$this->db->order_by($table.".".$order, "DESC");
 		}
 
 		$data = $this->db->get($table);

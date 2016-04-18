@@ -4,86 +4,76 @@
 		<?php require_once(APPPATH.'views/estrutura/head.php'); ?>
 	</head>
 	<body>
+		<?php require_once(APPPATH.'views/estrutura/menu_topo.php'); ?>
 		<div class="container">
-			<div class="row">
-				<div class="span3 bs-docs-sidebar">
-					<?php require_once('estrutura/menu.php'); ?>
-				</div>
-				<div class="span9">
-					<h1>Prospects</h1>
-					<?php
-					if(isset($_GET['msg']) && !empty($_GET['msg'])) {
-						echo '<p class="alert"><strong>Mensagem!</strong> <span>'.$_GET['msg'].'</span></p>';
+			<h1><?php echo $titulo_pagina; ?></h1>
+			<p>Usuários cadastrados no sistema</p>
+			<p class="alert bg-danger" style="display:none;"><strong>Mensagem!</strong> <span></span></p>
+			<p><a href="<?php echo base_url().'prospects/cadastrar'; ?>" class="btn btn-primary">Cadastrar</a></p>
+			<p><strong>Legenda:</strong></p>
+			<ul class="legenda_estados list-unstyled">
+				<?php
+				foreach($acao as $key => $value) {
+					echo '<li><span class="estado_'.$key.'"></span> '.$value.'</li>';
+				} ?>
+			</ul>
+			<br /><br /><div class="clear"></div>
+			<p><em>Clique sobre o Estado para alterar o Prospect</em><img src="<?php echo base_url().'assets/img/carregando.gif'; ?>" title="Carregando" class="carregando" /></p>
+			<table class="table table-bordered table-hover table-condensed tablesorter" id="usuarios">
+				<thead>
+					<tr>
+						<th class="header">ID</th>
+						<th class="header">Nome</th>
+						<th class="header">Setor</th>
+						<th class="header">Estado</th>
+						<th class="header">Data Inserção</th>
+						<th class="header">Data Próxima Ação</th>
+						<th colspan="2" class="txtCenter">Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php
+				if(!empty($prospects)) {
+					foreach($prospects as $key => $value) {
+						echo '
+						<tr>
+							<td>'.$value->id.'</td>
+							<td>'.$value->nome.'</td>
+							<td>'.$value->nomeSetor.'</td>
+							<td>
+								<div class="estado">
+									<input type="hidden" class="id_prospect num_'.$value->id.'" value="'.$value->id.'" />';
+									for($i = 1; $i < 6; $i++) {
+										if($i <= $value->acao_id) {
+											echo '<div class="estado'.$i.' prospect p'.$i.'" title="'.$acao[$i].'"><input type="hidden" value="'.$i.'" /></div>';
+										} else {
+											echo '<div title="'.$acao[$i].'" class="prospect p'.$i.'"><input type="hidden" value="'.$i.'" /></div>';
+										}
+									}
+							echo '
+								</div>
+							</td>
+							<td>'.$value->frase.'</td>
+							<td class="col-md-1"><a href="'.base_url().'admin/usuarios/cadastrar/'.$value->id.'" class="btn btn-default" title="Editar"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+							<td class="col-md-1"><a href="'.base_url().'admin/usuarios/excluir/'.$value->id.'" class="btn btn-danger" title="Excluir" onclick="return confirmar_exclusao(\'Usuário\')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+						</tr>
+						';
 					}
-					?>
-					<p>Legenda:</p>
-					<ul class="legenda_estados">
-						<?php
-						foreach($acao as $key => $value) {
-							echo '<li><span class="estado_'.$key.'"></span> '.$value.'</li>';
-						} ?>
-					</ul>
-					<p><em>Clique sobre o Estado para alterar o Prospect</em><img src="<?php echo base_url().'assets/img/carregando.gif'; ?>" title="Carregando" class="carregando" /></p>
-					<table class="table table-bordered table-hover table-striped">
-						<thead>
-							<tr>
-								<td>ID</td>
-								<td>Nome</td>
-								<td>Setor</td>
-								<td>Estado</td>
-								<td>Data Inserção</td>
-								<td>Data Próxima Ação</td>
-								<td colspan="2">Ações</td>
-							</tr>
-						</thead>
-						<tbody>
-							<?php
-							if(!empty($prospects)) {
-								foreach($prospects as $key => $value) {
-							?>
-									<tr>
-										<td><?php echo $value->id; ?></td>
-										<td><?php echo $value->nome; ?></td>
-										<td><?php echo $value->nomeSetor; ?></td>
-										<td>
-											<div class="estado">
-												<input type="hidden" class="id_prospect num_<?php echo $value->id; ?>" value="<?php echo $value->id; ?>" />
-												<?php for($i = 1; $i < 6; $i++) { ?>
-													<?php if($i <= $value->acao_id) { ?>
-														<div class="estado_<?php echo $i;?> prospect p<?php echo $i;?>" title="<?php echo $acao[$i]; ?>"><input type="hidden" value="<?php echo $i; ?>" /></div>
-													<?php } else { ?>
-														<div title="<?php echo $acao[$i]; ?>" class="prospect p<?php echo $i;?>"><input type="hidden" value="<?php echo $i; ?>" /></div>
-													<?php } ?>
-												<?php } ?>
-											</div>
-										</td>
-										<td><?php echo date('d/m/Y', strtotime($value->data_insercao)); ?></td>
-										<td><?php echo date('d/m/Y', strtotime($value->data_proxima_acao)); ?></td>
-										<td><a href="<?php echo base_url().'prospect/editar/'.$value->id; ?>" title="Editar"><em class="icon-edit"></em></a></td>
-										<td><a href="<?php echo base_url().'prospect/excluir/'.$value->id; ?>" title="Excluir" onclick="return confirmar_exclusao('Prospect')"><em class="icon-trash"></em></a></td>
-									</tr>
-							<?php
-								}
-							} else {
-							?>
-								<tr>
-									<td colspan="8"><em>Não há Prospects Cadastrados</em></td>
-								</tr>
-							<?php } ?>
-						</tbody>
-						<?php if(!empty($prospects) && !empty($paginador)) { ?>
-							<tfoot>
-								<tr>
-									<td colspan="8"><?php echo $paginador; ?></td>
-								</tr>
-							</tfoot>
-						<?php } ?>
-					</table>
-				</div>
-			</div>
+				} else {
+					echo '<tr><td colspan="7"><em>Não há Prospects Cadastrados</em></td></tr>';
+				} ?>
+				</tbody>
+				<?php if($total_registros > $itens_por_pagina) { ?>
+				<tfoot>
+					<tr>
+						<td colspan="6"><?php echo $paginador; ?></td>
+					</tr>
+				</tfoot>
+				<?php } ?>
+			</table>
+			<?php require_once(APPPATH.'views/estrutura/assinatura_site.php'); ?>
 		</div>
+		<?php require_once(APPPATH.'views/estrutura/footer.php'); ?>
+		<script type="text/javascript">var urlAtualizarStatusProspect = "<?php echo base_url().'prospects/atualizar_status_prospect/'; ?>";</script>
 	</body>
-	<script type="text/javascript">
-		var urlAtualizarStatusProspect = "<?php echo base_url().'prospect/atualizar_status_prospect/'; ?>";
-	</script>
 </html>

@@ -20,6 +20,7 @@ echo meta($meta);
 
 //styles
 echo link_tag('assets/css/bootstrap/bootstrap.min.css');
+echo link_tag('assets/css/bootstrap/bootstrap.responsive.css');
 echo link_tag('assets/css/bootstrap/ie10-viewport-bug-workaround.css');
 echo link_tag('assets/css/bootstrap/navbar-fixed-top.css');
 echo link_tag('assets/css/jquery/jquery-ui.min.css');

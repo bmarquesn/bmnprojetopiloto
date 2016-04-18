@@ -40,7 +40,6 @@ class Usuario_model extends Comuns_model {
 		}
 		
 		$data = $this->db->get($this->tabela.' AS Usuario');
-		//var_dump($pagina,$limit,$this->db->last_query());die;
 		return $data->result();
 	}
 }

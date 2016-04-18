@@ -439,4 +439,50 @@ class Comuns extends PhpQuery {
 		
 		die;
 	}
+	
+	public function retorna_paginacao($filtros, $paginador) {
+		$paginador = str_replace('class="btn btn-info"', 'class="btn"', $paginador);
+		$paginador = explode('<a href="', $paginador);
+		foreach($paginador as $key => $value) {
+			if($key > 0) {
+				$links_paginador[$key] = explode('"><button class="btn', $value);
+			}
+		}
+		if(isset($links_paginador) && !empty($links_paginador) && isset($filtros) && !empty($filtros)) {
+			foreach($filtros as $key3 => $value3) {
+				foreach($links_paginador as $key => $value) {
+					foreach($value as $key2 => $value2) {
+						if($key2 == 0) {
+							$links_paginador[$key][$key2] = $value2.'&'.$key3.'='.$value3;
+						}
+					}
+				}
+			}
+			foreach($links_paginador as $key => $value) {
+				foreach($value as $key2 => $value2) {
+					if($key2 == '1') {
+						$links_paginador[$key][$key2] = explode('">', $value2);
+					}
+				}
+			}
+			foreach($links_paginador as $key => $value) {
+				foreach($value as $key2 => $value2) {
+					if($key2 == '0') {
+						$links_paginador[$key][0] = '<a href="'.$value2.'"><button class="btn">';
+					}
+				}
+			}
+			foreach($links_paginador as $key => $value) {
+				$links_paginador[$key][0] = $value[0].$value[1][1];
+			}
+			$string_paginador = '';
+			foreach($paginador as $key => $value) {
+				if($key > 0) {
+					$string_paginador .= $links_paginador[$key][0];
+				}
+			}
+			$string_paginador = $paginador[0].$string_paginador;
+			return $string_paginador;
+		}
+	}
 }

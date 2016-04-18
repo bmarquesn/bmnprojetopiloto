@@ -54,49 +54,7 @@ class Usuarios extends Admin {
 			}
 		}
 		if(!empty($filtros) && !empty($paginador)) {
-			$paginador = str_replace('class="btn btn-info"', 'class="btn"', $paginador);
-			$paginador = explode('<a href="', $paginador);
-			foreach($paginador as $key => $value) {
-				if($key > 0) {
-					$links_paginador[$key] = explode('"><button class="btn', $value);
-				}
-			}
-			if(isset($links_paginador) && !empty($links_paginador) && isset($filtros) && !empty($filtros)) {
-				foreach($filtros as $key3 => $value3) {
-					foreach($links_paginador as $key => $value) {
-						foreach($value as $key2 => $value2) {
-							if($key2 == 0) {
-								$links_paginador[$key][$key2] = $value2.'&'.$key3.'='.$value3;
-							}
-						}
-					}
-				}
-				foreach($links_paginador as $key => $value) {
-					foreach($value as $key2 => $value2) {
-						if($key2 == '1') {
-							$links_paginador[$key][$key2] = explode('">', $value2);
-						}
-					}
-				}
-				foreach($links_paginador as $key => $value) {
-					foreach($value as $key2 => $value2) {
-						if($key2 == '0') {
-							$links_paginador[$key][0] = '<a href="'.$value2.'"><button class="btn">';
-						}
-					}
-				}
-				foreach($links_paginador as $key => $value) {
-					$links_paginador[$key][0] = $value[0].$value[1][1];
-				}
-				$string_paginador = '';
-				foreach($paginador as $key => $value) {
-					if($key > 0) {
-						$string_paginador .= $links_paginador[$key][0];
-					}
-				}
-				$string_paginador = $paginador[0].$string_paginador;
-				$paginador = $string_paginador;
-			}
+			$paginador = $this->retorna_paginacao($filtros, $paginador);
 		}
 		
 		$data['total_registros'] = $total_registros;
@@ -109,7 +67,10 @@ class Usuarios extends Admin {
 		
 		if(!empty($msg)) {
 			$data['msg'] = ucfirst(str_replace('_', ' ', $msg));
+		} elseif(isset($_GET['msg']) && !empty(isset($_GET['msg']))) {
+			$data['msg'] = ucfirst(str_replace('_', ' ', $_GET['msg']));
 		}
+		
 		$this->load->view('admin/usuarios/listar', $data);
 	}
 	
@@ -145,9 +106,14 @@ class Usuarios extends Admin {
 					redirect(base_url().'admin/usuarios/index/0/erro_ao_cadastrar_usuario');
 				}
 			} else {
+				redirect(base_url().'admin/usuarios/index/0/erro_ao_cadastrar_usuario');
 			}
 		} else {
-			$data['titulo_pagina'] = 'Cadastrar';
+			if(!empty($id)) {
+				$data['titulo_pagina'] = 'Editar';
+			} else {
+				$data['titulo_pagina'] = 'Cadastrar';
+			}
 			$data['pagina'] = 'usuarios';
 			$data['colorpicker'] = 1;
 			if(!empty($id)) {
@@ -166,9 +132,9 @@ class Usuarios extends Admin {
 	
 	public function excluir($id = null) {
 		if($this->Usuario_model->del_record($this->Usuario_model->tabela(), $id)) {
-			redirect(base_url().'usuario/index/0/usuario_excluido_com_sucesso');
+			redirect(base_url().'admin/usuarios/index/0/usuario_excluido_com_sucesso');
 		} else {
-			redirect(base_url().'usuario/index/0/erro_ao_excluir_usuario');
+			redirect(base_url().'admin/usuarios/index/0/erro_ao_excluir_usuario');
 		}
 	}
 }
