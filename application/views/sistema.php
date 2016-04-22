@@ -18,11 +18,6 @@
 					<p><a class="btn btn-success" href="<?php echo base_url().'admin/usuarios'; ?>">Usuários</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
-					<h2>Currículo</h2>
-					<p>Dados pessoais, formação acadêmica, experiência profissional</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'curriculo'; ?>">Curriculo</a></p>
-				</div>
-				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Prospects</h2>
 					<p>Sistema para inserção, exibição, edição ou remoção ('CRUD') de prospects</p>
 					<p><a class="btn btn-success" href="<?php echo base_url().'prospects'; ?>">Prospects</a></p>
@@ -42,8 +37,6 @@
 					<p>Documentação do sistema em PHPDoc</p>
 					<p><a class="btn btn-success" href="<?php echo base_url().'documentacao_phpdoc'; ?>">Documentação</a></p>
 				</div>
-			</div>
-			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Procedure</h2>
 					<p>Exibicao de Procedures SQL</p>

@@ -13,7 +13,7 @@
 			<table class="table table-bordered table-hover table-condensed tablesorter" id="usuarios">
 				<thead>
 					<tr>
-						<th class="header">Nome</th>
+						<th class="header col-md-6">Nome</th>
 						<th class="header">Email</th>
 						<th colspan="2" class="txtCenter">Ações</th>
 					</tr>
@@ -32,13 +32,13 @@
 						';
 					}
 				} else {
-					echo '<tr><td colspan="6"><em>Não há Usuários Cadastrados</em></td></tr>';
+					echo '<tr><td colspan="4"><em>Não há Usuários Cadastrados</em></td></tr>';
 				} ?>
 				</tbody>
 				<?php if($total_registros > $itens_por_pagina) { ?>
 				<tfoot>
 					<tr>
-						<td colspan="6"><?php echo $paginador; ?></td>
+						<td colspan="4"><?php echo $paginador; ?></td>
 					</tr>
 				</tfoot>
 				<?php } ?>

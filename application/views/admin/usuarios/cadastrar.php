@@ -21,31 +21,6 @@
 		</div>
 		<?php require_once(APPPATH.'views/estrutura/footer.php'); ?>
 		<script type="text/javascript">
-		$(function(){
-			<?php if(isset($usuario)&&!empty($usuario)){echo "$('#cor').css({'background':'".$usuario[0]->cor."','color':'".$usuario[0]->cor."'});\n";} ?>
-			$('#cor').ColorPicker({
-				color:'#0000ff',
-				onShow:function(colpkr){
-					$(colpkr).fadeIn(500);
-					return false;
-				},
-				onHide:function(colpkr){
-					$(colpkr).fadeOut(500);
-					return false;
-				},
-				onChange:function(hsb,hex,rgb){
-					$('#cor').css({'background':'#'+hex,'color':'#'+hex});
-					$('#cor').val(hex);
-				},
-				onSubmit:function(hsb,hex,rgb,el){
-					$(el).val(hex);
-					$(el).ColorPickerHide();
-				},
-				onBeforeShow:function(){
-					$(this).ColorPickerSetColor(this.value);
-				}
-			});
-		});
 		//Function that checks if valid email
 		function valida_cadastro_usuario(){
 			var valido = false;

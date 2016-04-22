@@ -14,7 +14,7 @@
 require_once('Comuns_model.php');
 
 class Usuario_model extends Comuns_model {
-	protected $tabela = 'usuario';
+	public $tabela = 'usuario';
 	
 	public function listar($filtros, $pagina = '', $limit = '') {
 		$select = 'Usuario.*';

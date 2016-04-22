@@ -16,7 +16,6 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="nav navbar-nav">
 				<li<?php if(isset($pagina) && $pagina === 'usuarios'){echo ' class="active"';}?>><a href="<?php echo base_url().'admin/usuarios'; ?>">Usuários</a></li>
-				<li<?php if(isset($pagina) && $pagina === 'curriculo'){echo ' class="active"';}?>><a href="<?php echo base_url().'curriculo'; ?>">Currículo</a></li>
 				<li<?php if(isset($pagina) && $pagina === 'prospects'){echo ' class="active"';}?>><a href="<?php echo base_url().'prospects'; ?>">Prospects</a></li>
 				<li<?php if(isset($pagina) && $pagina === 'setores'){echo ' class="active"';}?>><a href="<?php echo base_url().'admin/setores'; ?>">Setores</a></li>
 				<li<?php if(isset($pagina) && $pagina === 'logs'){echo ' class="active"';}?>><a href="<?php echo base_url().'admin/historico_acoes'; ?>">Logs</a></li>
