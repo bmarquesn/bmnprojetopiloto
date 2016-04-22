@@ -85,9 +85,6 @@ class Usuarios extends Admin {
 				if(isset($_POST['senha']) && !empty($_POST['senha'])) {
 					$data['senha'] = md5($this->anti_sql_injection($_POST['senha']).$this->hash_senha());
 				}
-				$data['nick'] = $this->anti_sql_injection($_POST['nick']);
-				$data['frase'] = $this->anti_sql_injection($_POST['frase']);
-				$data['cor'] = $this->anti_sql_injection($_POST['cor']);
 				if(!empty($data['id'])) {
 					$this->Usuario_model->upd_record($this->Usuario_model->tabela(), $data);
 					$id_usuario = $data['id'];

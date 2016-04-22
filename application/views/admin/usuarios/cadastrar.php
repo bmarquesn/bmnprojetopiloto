@@ -14,12 +14,6 @@
 				<p><label for="nome">Nome</label><input type="text" id="nome" name="nome" value="<?php if(isset($usuario)&&!empty($usuario)){echo $usuario[0]->nome;} ?>" class="form-control" /></p></label>
 				<p><label for="email">E-mail</label><input type="text" id="email" name="email" value="<?php if(isset($usuario)&&!empty($usuario)){echo $usuario[0]->email;} ?>" class="form-control" /></p></label>
 				<p><label for="senha">Senha</label><input type="password" id="senha" name="senha" value="" class="form-control" /></p></label>
-				<p><em>Os próximos campos não são obrigatórios (se vazios serão requisitados quando necessário).</em></p>
-				<div class="row">
-					<p class="col-md-4"><label for="nick">Nick</label><input type="text" id="nick" name="nick" value="<?php if(isset($usuario)&&!empty($usuario)){echo $usuario[0]->nick;} ?>" class="form-control" /></p></label>
-					<p class="col-md-4"><label for="frase">Frase</label><input type="text" id="frase" name="frase" value="<?php if(isset($usuario)&&!empty($usuario)){echo $usuario[0]->frase;} ?>" class="form-control" /></p></label>
-					<p class="col-md-4"><label for="cor">Cor</label><input type="text" id="cor" name="cor" value="<?php if(isset($usuario)&&!empty($usuario)){echo $usuario[0]->cor;} ?>" class="form-control" /></p></label>
-				</div>
 				<br />
 				<p><input type="submit" value="Salvar" class="btn btn-default" /> <a href="<?php echo base_url().'admin/usuarios'; ?>" class="btn btn-default">Voltar</a></label>
 			</form>

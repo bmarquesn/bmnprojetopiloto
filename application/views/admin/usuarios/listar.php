@@ -15,8 +15,6 @@
 					<tr>
 						<th class="header">Nome</th>
 						<th class="header">Email</th>
-						<th class="header">Nick</th>
-						<th class="header">Frase</th>
 						<th colspan="2" class="txtCenter">Ações</th>
 					</tr>
 				</thead>
@@ -27,9 +25,7 @@
 						echo '
 						<tr>
 							<td>'.$value->nome.'</td>
-							<td>'.$value->email.'</td>
-							<td>'.$value->nick.'</td>
-							<td>'.$value->frase.'</td>
+							<td>'.$value->email.'</td>							
 							<td class="col-md-1"><a href="'.base_url().'admin/usuarios/cadastrar/'.$value->id.'" class="btn btn-default" title="Editar"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
 							<td class="col-md-1"><a href="'.base_url().'admin/usuarios/excluir/'.$value->id.'" class="btn btn-danger" title="Excluir" onclick="return confirmar_exclusao(\'Usuário\')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 						</tr>
