@@ -77,7 +77,7 @@ $(document).ready( function() {
 });
 /*validates form*/
 //Function that checks if the field is empty
-function completed(field, name) {
+function completed(field, name){
 	if (field.val() != ''){
 		return true;
 	}else{
@@ -89,7 +89,7 @@ function completed(field, name) {
 }
 
 //Function that checks if valid email
-function validEmail(field, name) {
+function validEmail(field, name){
     var value_field = $(field).val();
     if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value_field)) || (!value_field)) {
         return true;
@@ -99,6 +99,15 @@ function validEmail(field, name) {
         $(field).focus();
         return false;
     }
+}
+
+function confirmar_exclusao(tipo){
+	var retorno=false;
+	var confirmar=confirm('Deseja mesmo excluir o '+tipo);
+	if(confirmar){
+		retorno=true;
+	}
+	return retorno;
 }
 
 /* Brazilian initialisation for the jQuery UI date picker plugin. */

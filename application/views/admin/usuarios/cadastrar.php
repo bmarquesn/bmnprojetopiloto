@@ -7,7 +7,7 @@
 		<?php require_once(APPPATH.'views/estrutura/menu_topo.php'); ?>
 		<div class="container">
 			<h1><?php echo $titulo_pagina; ?></h1>
-			<p>Cadastrar usuários no sistema</p>
+			<p><?php echo isset($usuario)&&!empty($usuario)?'Editar':'Cadastrar'; ?> usuário no sistema</p>
 			<p class="alert bg-danger" style="display:none;"><strong>Mensagem!</strong> <span></span></p>
 			<form action="" method="post" onsubmit="return valida_cadastro_usuario()">
 				<input type="hidden" name="id" value="<?php if(isset($usuario)&&!empty($usuario)){echo $usuario[0]->id;} ?>" />

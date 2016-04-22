@@ -116,12 +116,6 @@ class Usuarios extends Admin {
 			if(!empty($id)) {
 				/** dados edicao */
 				$data['usuario'] = $this->Usuario_model->get_all_where($this->Usuario_model->tabela(), 'id', $this->anti_sql_injection($id));
-				foreach($data['usuario'] as $key => $value) {
-					unset($data['usuario'][$key]->senha);
-					if(strripos($value->cor, '#') === false) {
-						$data['usuario'][$key]->cor = '#'.$value->cor;
-					}
-				}
 			}
 			$this->load->view('admin/usuarios/cadastrar', $data);
 		}
