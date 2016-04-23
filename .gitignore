@@ -28,27 +28,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 .project
 .settings
-*.jpg
-*.jpeg
-*.gif
-*.png
-*.htm
-*.html
 *.md
-*.swf
-*.flv
-*.f4v
-*.zip
-*.dia*	
-*.sql
-*.rar
-*.zip
-assets/images/
-assets/audios/
-application/libraries/mPDF
-assets/css/colorpicker
-assets/css/bootstrap
-assets/js/jquery
-assets/js/colorpicker
-documentacaoProspects/
-PhpDocumentor/
