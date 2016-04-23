@@ -117,7 +117,7 @@ if (isset($_GET['dataform']) && empty($_REQUEST['altuserdir'])) {
 
 	echo "<strong>Parsing Files ...</strong>";
 	flush();
-	echo '<p><a href="/prospects/documentacaoProspects/index.html" target="_parent">Clique aqui para visualizar a documentação</a></p>';
+	echo '<p><a href="/bmnprojetopiloto/documentacaoProspects/index.html" target="_parent">Clique aqui para visualizar a documentação</a></p>';
 	echo "<pre>\n";
 	/** phpdoc.inc */
 	include("$root_dir/phpDocumentor/phpdoc.inc");

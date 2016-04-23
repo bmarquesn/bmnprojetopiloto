@@ -441,7 +441,12 @@ var screenShots = new Array();
 ?></a>
 			</td>
 			<td valign="top">
-				<input type="text" name="setting_target" size="60" class="text" value="C:\xampp\htdocs\prospects\documentacaoProspects" />
+				<?php
+				if(!file_exists($_SESSION['endereco_pasta'].'documentacaoProspects'.DIRECTORY_SEPARATOR)) {
+					mkdir("/documentacaoProspects", 0777);
+				}
+				?>
+				<input type="text" name="setting_target" size="60" class="text" value="<?php echo $_SESSION['endereco_pasta'].'documentacaoProspects'; ?>" />
 			</td>
 			<td valign="top" class="small">
 				Target is the directory where the output produced by phpDocumentor will reside.<br />
