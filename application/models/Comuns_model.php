@@ -30,8 +30,6 @@ class Comuns_model extends CI_Model {
 			} else {
 				$this->db->order_by($table.".".$order, "DESC");
 			}
-			
-			$this->db->order_by($table.".".$order, "DESC");
 		}
 
 		$data = $this->db->get($table);
@@ -164,10 +162,6 @@ class Comuns_model extends CI_Model {
 		if($this->db->affected_rows()) {//active records
 			if($this->db->insert_id() != '0') {
 				$return = $this->db->insert_id();
-			} elseif(isset($options['num_banco'])) {
-				$return = $options['num_banco'];
-			} elseif(isset($options['cnpj_cpf'])) {
-				$return = $options['cnpj_cpf'];
 			}
 		} else {
 			$return = null;

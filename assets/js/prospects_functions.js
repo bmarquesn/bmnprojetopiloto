@@ -11,7 +11,7 @@ $(function() {
 		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
 		monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
 		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-		nextText: 'PrÃ³ximo',
+		nextText: 'Próximo',
 		prevText: 'Anterior',
 		controlType: 'select',
 		oneLine: true,
@@ -42,14 +42,40 @@ $(function() {
 			},
 			type: 'numeric'
 		});
-		$("#noticias").tablesorter({
+		$("#usuarios").tablesorter({
+			headers:{4:{sorter:false}}
+		});
+		$("#prospects").tablesorter({
 			headers:{
-				1:{sorter:'datetime'}
-				,2:{sorter:false}
+				3:{sorter:false}
+				,4:{sorter:'datetime'}
+				,5:{sorter:'datetime'}
+				,6:{sorter:false}
 			},
 			dateFormat:'dd/mm/yyyy H:i'
 		});
+		$("#setores").tablesorter({
+			headers:{1:{sorter:false}}
+		});
+		$("#historic_acoes").tablesorter({
+			headers:{1:{sorter:'datetime'}}
+		});
 	}
+	
+	$('.estado div').click(function(){
+		var confirmar = confirm('Deseja mesmo alterar o status deste Prospect?');
+		
+		if(confirmar) {
+			var acaoId = $(this).children('input').val();
+			var prospectSelecionado = $(this).parent('.estado').children('.id_prospect').val();
+			atualizarStatusProspect(prospectSelecionado,acaoId);
+		}
+	});
+	
+	$('#limpar_filtro').click(function(){
+		$(this).parents('form').find('input[type="text"]').val('');
+		$(this).parents('form').submit();
+	});
 });
 $(document).on('change', '.btn-file :file', function() {
   var input = $(this),
@@ -74,21 +100,20 @@ $(document).ready( function() {
 });
 /*validates form*/
 //Function that checks if the field is empty
-function completed(field, name) {
+function completed(field, name){
 	if (field.val() != ''){
 		return true;
 	}else{
-		$('.alert.alert-danger span').html('O campo '+name+' deve ser preenchido');
-		$('.alert.alert-danger').show('fast');
+		$('.alert.bg-danger span').html('O campo '+name+' deve ser preenchido');
+		$('.alert.bg-danger').show('fast');
 		field.focus();
 		return false;
 	}
 }
 
 //Function that checks if valid email
-function email(field, name) {
+function validEmail(field, name){
     var value_field = $(field).val();
-    
     if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value_field)) || (!value_field)) {
         return true;
     } else {
@@ -99,26 +124,15 @@ function email(field, name) {
     }
 }
 
-//-------------------------------------------------------------
-function validar_insercao_prospect() {
-	var ok = false;
-	
-	if(!completed($('#nome'),'Nome')) {
-		ok = false;
-	} else if(!completed($('#setor'),'Setor')) {
-		ok = false;
-	} else if(!completed($('#contatos'),'Contatos')) {
-		ok = false;
-	} else if(!completed($('#acao'),'Ação')) {
-		ok = false;
-	} else if(!completed($('#dataProximaAcao'),'Data Próxima Ação')) {
-		ok = false;
-	} else {
-		ok = true;
+function confirmar_exclusao(tipo){
+	var retorno=false;
+	var confirmar=confirm('Deseja mesmo excluir o '+tipo);
+	if(confirmar){
+		retorno=true;
 	}
-	
-	return ok;
+	return retorno;
 }
+
 /* Brazilian initialisation for the jQuery UI date picker plugin. */
 /* Written by Leonildo Costa Silva (leocsilva@gmail.com). */
 (function( factory ) {
@@ -149,3 +163,32 @@ function validar_insercao_prospect() {
 	datepicker.setDefaults(datepicker.regional['pt-BR']);
 	return datepicker.regional['pt-BR'];
 }));
+
+function atualizarStatusProspect(prospectSelecionado,acaoId) {
+	$.ajax({
+        type:"POST",
+        data:{acao:acaoId},
+        url:urlAtualizarStatusProspect+''+prospectSelecionado,
+        cache:'false',
+        dataType: 'json',
+        success:function(data){
+        	if(data == '1') {
+	        	for(i = 1; i <= 5; i++) {
+	        		$('.num_'+prospectSelecionado).parent('div').children('.p'+i).removeClass('estado_'+i);
+	        	}
+	        	
+	        	for(i = 1; i <= acaoId; i++) {
+	        		$('.num_'+prospectSelecionado).parent('div').children('.p'+i).addClass('estado_'+i);
+	        	}
+        	} else {
+        		alert('Erro... Tente novamente atualizar o Estado deste Prospect!!!');
+        	}
+        },
+        beforeSend: function(){
+            $('.carregando').fadeIn('fast');
+        },
+        complete: function(msg){
+        	$('.carregando').fadeOut('fast');
+        }
+    });
+}

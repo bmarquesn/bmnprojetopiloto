@@ -13,9 +13,9 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-2">
-					<h2>Currículo</h2>
-					<p>Dados pessoais, formação acadêmica, experiência profissional</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'curriculo'; ?>">Curriculo</a></p>
+					<h2>Usuários</h2>
+					<p>Lista de Usuários que poderão acessar o sistema</p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'admin/usuarios'; ?>">Usuários</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Prospects</h2>
@@ -23,14 +23,14 @@
 					<p><a class="btn btn-success" href="<?php echo base_url().'prospects'; ?>">Prospects</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
-					<h2>Usuários</h2>
-					<p>Lista de Usuários que poderão acessar o sistema</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'usuarios'; ?>">Usuários</a></p>
+					<h2>Setores</h2>
+					<p>Sistema para inserção, exibição, edição ou remoção ('CRUD') de setores</p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'setores'; ?>">Setores</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Logs</h2>
 					<p>Histórico de ações no sistema</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'historico_acoes'; ?>">Histórico</a></p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'admin/historico_acoes'; ?>">Histórico</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>PHPDoc</h2>

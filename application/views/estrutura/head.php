@@ -20,6 +20,7 @@ echo meta($meta);
 
 //styles
 echo link_tag('assets/css/bootstrap/bootstrap.min.css');
+echo link_tag('assets/css/bootstrap/bootstrap.responsive.css');
 echo link_tag('assets/css/bootstrap/ie10-viewport-bug-workaround.css');
 echo link_tag('assets/css/bootstrap/navbar-fixed-top.css');
 echo link_tag('assets/css/jquery/jquery-ui.min.css');
@@ -27,10 +28,20 @@ echo link_tag('assets/css/jquery/jquery-ui.structure.min.css');
 echo link_tag('assets/css/jquery/jquery-ui-timepicker-addon.css');
 echo link_tag('assets/css/prospects.css');
 echo link_tag('assets/css/menu_topo.css');
+$page_icon = array(
+	'rel' => 'shortcut icon',
+	'type' => 'image/x-icon',
+	'href' => 'assets/img/bruno_icon_page.ico',
+);
+echo link_tag($page_icon);
 if(isset($link_css) && !empty($link_css)) {
 	foreach($link_css as $key => $value) {
 		echo link_tag($value);
 	}
+}
+if(isset($colorpicker) && !empty($colorpicker)) {
+	echo link_tag('assets/css/colorpicker/colorpicker.css');
+	//echo link_tag('assets/css/colorpicker/layout.css');
 }
 ?>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

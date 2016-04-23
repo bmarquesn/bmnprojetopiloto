@@ -1,7 +1,11 @@
 <script type="text/javascript">var base_url = '<?php echo base_url(); ?>';</script>
 <?php
 //javascripts
-$loadJQuery = array('src' => 'assets/js/jquery/jquery-2.1.1.js', 'type' => 'text/javascript');
+if(isset($colorpicker) && !empty($colorpicker)) {
+	$loadJQuery = array('src' => 'assets/js/jquery/jquery-1.10.2.js', 'type' => 'text/javascript');
+} else {
+	$loadJQuery = array('src' => 'assets/js/jquery/jquery-2.1.1.js', 'type' => 'text/javascript');
+}
 $bootstrap = array('src' => 'assets/js/bootstrap/bootstrap.min.js', 'type' => 'text/javascript');
 $jQueryUi = array('src' => 'assets/js/jquery/jquery-ui.min.js', 'type' => 'text/javascript');
 $time_picker = array('src' => 'assets/js/jquery/jquery-ui-timepicker-addon.js', 'type' => 'text/javascript');

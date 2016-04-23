@@ -16,6 +16,7 @@
 require_once('admin/Admin.php');
 
 class Login extends Admin {
+	
 	public function index($retorno = null) {
 		if(!empty($retorno)) {
 			$data['retorno'] = ucfirst(str_replace('_', ' ', $retorno));
@@ -37,6 +38,11 @@ class Login extends Admin {
 				$_SESSION['admin']['id_usuario'] = $dadosUsuario[0]->id;
 				$_SESSION['admin']['nome_usuario'] = $dadosUsuario[0]->nome;
 				$_SESSION['admin']['email_usuario'] = $dadosUsuario[0]->email;
+				/** Gravo log */
+				$this->load->model('Logs_model');
+				$dataLog['acao'] = 'O usuário '.$_SESSION['admin']['nome_usuario'].' - '.$_SESSION['admin']['email_usuario'].' logou no sistema';
+				$dataLog['data_acao'] = date('Y-m-d H:i:s');
+				$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
 				redirect(base_url().'sistema/');
 			} else {
 				redirect(base_url().'login/index?msg=dadosInvalidos');
@@ -48,6 +54,11 @@ class Login extends Admin {
 	
 	public function sair() {
 		if(isset($_SESSION) && !empty($_SESSION)) {
+			/** Gravo log */
+			$this->load->model('Logs_model');
+			$dataLog['acao'] = 'O usuário '.$_SESSION['admin']['nome_usuario'].' - '.$_SESSION['admin']['email_usuario'].' saiu do sistema';
+			$dataLog['data_acao'] = date('Y-m-d H:i:s');
+			$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
 			session_destroy();
 		}
 		redirect(base_url().'login/');
@@ -66,6 +77,11 @@ class Login extends Admin {
 			$data['id'] = $dadosUsuario[0]->id;
 			
 			if($this->Usuario_model->upd_record('usuario', $data)) {
+				/** Gravo log */
+				$this->load->model('Logs_model');
+				$dataLog['acao'] = 'O usuário '.$dadosUsuario[0]->nome.' - '.$dadosUsuario[0]->email.' esqueceu/redefiniu sua senha do sistema';
+				$dataLog['data_acao'] = date('Y-m-d H:i:s');
+				$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
 				if(!empty($dadosUsuario[0]->nome)) {
 					$corpo = '<p>Olá '.$dadosUsuario[0]->nome.'</p>';
 				} else {
