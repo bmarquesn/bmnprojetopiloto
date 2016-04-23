@@ -1,0 +1,8 @@
+Sistema feito em Codeigneiter e Mysql
+
+Coloque os arquivos dentro de seu servidor Apache
+Execute em seu banco de dados o arquivo projeto.sql
+
+Para acessar utilize:
+E-mail: teste@teste.com.br
+Senha: 1234

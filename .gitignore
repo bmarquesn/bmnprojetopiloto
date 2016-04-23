@@ -35,7 +35,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.htm
 *.html
 *.md
-*.txt
 *.swf
 *.flv
 *.f4v
