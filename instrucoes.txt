@@ -1,7 +1,8 @@
 Sistema feito em Codeigneiter e Mysql
 
 Coloque os arquivos dentro de seu servidor Apache
-Execute em seu banco de dados o arquivo projeto.sql
+
+Execute em seu banco de dados o arquivo assets/docs/projeto.sql
 
 Para acessar utilize:
 E-mail: teste@teste.com.br
