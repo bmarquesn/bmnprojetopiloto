@@ -29,3 +29,11 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 .project
 .settings
 *.md
+
+application/libraries/mPDF
+assets/css/colorpicker
+assets/css/bootstrap
+assets/js/jquery
+assets/js/colorpicker
+documentacaoProspects/
+PhpDocumentor/
