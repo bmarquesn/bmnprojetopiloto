@@ -28,6 +28,11 @@
 					<p><a class="btn btn-success" href="<?php echo base_url().'setores'; ?>">Setores</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
+					<h2>Procedure</h2>
+					<p>Exibicao de Procedures SQL</p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'procedure'; ?>">Procedure</a></p>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Logs</h2>
 					<p>Histórico de ações no sistema</p>
 					<p><a class="btn btn-success" href="<?php echo base_url().'admin/historico_acoes'; ?>">Histórico</a></p>
@@ -37,10 +42,13 @@
 					<p>Documentação do sistema em PHPDoc</p>
 					<p><a class="btn btn-success" href="<?php echo base_url().'documentacao_phpdoc'; ?>">Documentação</a></p>
 				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="row">
 				<div class="col-sm-6 col-md-4 col-lg-2">
-					<h2>Procedure</h2>
-					<p>Exibicao de Procedures SQL</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'procedure'; ?>">Procedure</a></p>
+					<h2>Contato</h2>
+					<p>Entre em contato, tire suas dúvidas ou faça sugestões</p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'main/contato'; ?>">Contato</a></p>
 				</div>
 			</div>
 			<?php require_once('estrutura/assinatura_site.php'); ?>

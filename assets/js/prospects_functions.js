@@ -117,8 +117,8 @@ function validEmail(field, name){
     if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value_field)) || (!value_field)) {
         return true;
     } else {
-        $('.alert.alert-danger span').html('O campo ' + name + ' deve ser um email válido.');
-		$('.alert.alert-danger').show('fast');
+        $('.alert.bg-danger span').html('O campo ' + name + ' deve ser um email válido.');
+		$('.alert.bg-danger').show('fast');
         $(field).focus();
         return false;
     }
