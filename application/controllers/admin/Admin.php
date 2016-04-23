@@ -16,6 +16,7 @@ require_once('Comuns.php');
 
 class Admin extends Comuns {
 	public $checarSessao = 0;
+	public $itensPorPagina = 10;
 	
 	public function __construct(){
 		parent::__construct();

@@ -28,6 +28,12 @@ echo link_tag('assets/css/jquery/jquery-ui.structure.min.css');
 echo link_tag('assets/css/jquery/jquery-ui-timepicker-addon.css');
 echo link_tag('assets/css/prospects.css');
 echo link_tag('assets/css/menu_topo.css');
+$page_icon = array(
+	'rel' => 'shortcut icon',
+	'type' => 'image/x-icon',
+	'href' => 'assets/img/bruno_icon_page.ico',
+);
+echo link_tag($page_icon);
 if(isset($link_css) && !empty($link_css)) {
 	foreach($link_css as $key => $value) {
 		echo link_tag($value);

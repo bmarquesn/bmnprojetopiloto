@@ -21,7 +21,7 @@ class Prospects_Model extends Comuns_Model {
 		$this->db->select('Prospects.*, Setor.nome AS nomeSetor');
 		$this->db->join('setor AS Setor','Setor.id = Prospects.setor_id','LEFT');
 		$this->db->order_by('Prospects.data_insercao', 'DESC');
-		$data = $this->db->get($this->tabela' AS Prospects', $itens_por_pagina, $pagina);
+		$data = $this->db->get($this->tabela.' AS Prospects', $itens_por_pagina, $pagina);
 		
 		return $data->result();
 	}

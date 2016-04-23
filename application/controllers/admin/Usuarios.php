@@ -45,7 +45,7 @@ class Usuarios extends Admin {
 		}
 		$pagina = !isset($pagina_sql)?0:$pagina_sql;
 		$total_registros = count($this->Usuario_model->listar($filtros));
-		$itens_por_pagina = 10;
+		$itens_por_pagina = $this->itensPorPagina;
 		$paginador = $this->paginator->createPaginate('admin/usuarios/index/', $pagina, $total_registros, $itens_por_pagina, $config);
 		$usuarios = $this->Usuario_model->listar($filtros, $pagina, $itens_por_pagina);
 		if(!empty($usuarios)) {
@@ -93,6 +93,11 @@ class Usuarios extends Admin {
 				}
 				if(!empty($id_usuario)) {
 					unset($_POST);
+					/** Gravo log */
+					$this->load->model('Logs_model');
+					$dataLog['acao'] = (!empty($data['id'])?'Atualizacao':'Cadastro').' de usuário';
+					$dataLog['data_acao'] = date('Y-m-d H:i:s');
+					$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
 					if(!empty($data['id'])) {
 						redirect(base_url().'admin/usuarios/index/0/usuario_atualizado_com_sucesso');
 					} else {
@@ -116,16 +121,40 @@ class Usuarios extends Admin {
 			if(!empty($id)) {
 				/** dados edicao */
 				$data['usuario'] = $this->Usuario_model->get_all_where($this->Usuario_model->tabela(), 'id', $this->anti_sql_injection($id));
+				if(empty($data['usuario'])) {
+					redirect(base_url().'admin/usuarios/index/0/nao_foi_possivel_selecionar_usuario');
+				}
 			}
 			$this->load->view('admin/usuarios/cadastrar', $data);
 		}
 	}
 	
 	public function excluir($id = null) {
-		if($this->Usuario_model->del_record($this->Usuario_model->tabela(), $id)) {
-			redirect(base_url().'admin/usuarios/index/0/usuario_excluido_com_sucesso');
+		if(!empty($id)) {
+			if($this->Usuario_model->del_record($this->Usuario_model->tabela(), $id)) {
+				/** Gravo log */
+				$this->load->model('Logs_model');
+				$dataLog['acao'] = 'Exclusao de usuário';
+				$dataLog['data_acao'] = date('Y-m-d H:i:s');
+				$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
+				redirect(base_url().'admin/usuarios/index/0/usuario_excluido_com_sucesso');
+			} else {
+				redirect(base_url().'admin/usuarios/index/0/erro_ao_excluir_usuario');
+			}
 		} else {
-			redirect(base_url().'admin/usuarios/index/0/erro_ao_excluir_usuario');
+			redirect(base_url().'admin/usuarios/index/0/nao_foi_possivel_selecionar_usuario');
+		}
+	}
+	
+	public function verificar_email_existente() {
+		$email = isset($_POST['email'])?$this->anti_sql_injection($_POST['email']):0;
+		if(!empty($email)) {
+			$usuario = $this->Usuario_model->get_all_where($this->Usuario_model->tabela(), 'email', $email);
+			if(!empty($usuario)) {
+				echo '1';
+			} else {
+				echo '0';
+			}
 		}
 	}
 }

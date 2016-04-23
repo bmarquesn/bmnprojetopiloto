@@ -60,9 +60,10 @@ class Prospects extends Admin {
 		}
 		$pagina = !isset($pagina_sql)?0:$pagina_sql;
 		$total_registros = count($this->Prospects_model->get_all('prospects', 0));
-		$itens_por_pagina = 10;
+		$itens_por_pagina = $this->itensPorPagina;
 		$paginador = $this->paginator->createPaginate('prospects/index/', $pagina, $total_registros, $itens_por_pagina, $config);
-		$prospects = $this->Prospects_model->get_all_prospects($filtros, $pagina, $itens_por_pagina);		
+		$prospects = $this->Prospects_model->get_all_prospects($filtros, $pagina, $itens_por_pagina);
+		
 		if(!empty($filtros) && !empty($paginador)) {
 			$paginador = $this->retorna_paginacao($filtros, $paginador);
 		}
@@ -82,39 +83,45 @@ class Prospects extends Admin {
 			$data['msg'] = ucfirst(str_replace('_', ' ', $_GET['msg']));
 		}
 		
+		if(isset($data['msg']) && $data['msg'] === 'Nao ha setores cadastrados antes cadastre um') {
+			$data['msg'] = 'Nao ha setores cadastrados antes <a href="'.base_url().'admin/setores/cadastrar">cadastre um</a>';
+		}
+		
 		$this->load->view('prospects/listar', $data);
 	}
 
 	/** Salva o Prospect no BD */
 	public function cadastrar($id = null) {
 		/** insercao/atualizacao */
-		if(isset($_POST['nome']) && !empty($_POST['nome'])) {
-			if($this->valida_email($_POST['email'])) {
-				/** salvo os dados do prospect para pegar o ID */
-				$data['id'] = $this->anti_sql_injection($_POST['id']);
-				$data['nome'] = $this->anti_sql_injection($_POST['nome']);
-				$data['setor_id'] = (int)$this->anti_sql_injection($_POST['setor']);
-				$data['contatos'] = $this->anti_sql_injection($_POST['contatos']);
-				$data['acao_id'] = (int)$this->anti_sql_injection($_POST['acao']);
-				$data['data_proxima_acao'] = $this->formatar_data_banco_dados($this->anti_sql_injection($_POST['dataProximaAcao'])).' '.date('H:i:s');
+		if(isset($_POST['dataProximaAcao']) && !empty($_POST['dataProximaAcao'])) {
+			/** salvo os dados do prospect para pegar o ID */
+			$data['id'] = $this->anti_sql_injection($_POST['id']);
+			$data['nome'] = $this->anti_sql_injection($_POST['nome']);
+			$data['setor_id'] = (int)$this->anti_sql_injection($_POST['setor']);
+			$data['contatos'] = $this->anti_sql_injection($_POST['contatos']);
+			$data['acao_id'] = (int)$this->anti_sql_injection($_POST['acao']);
+			$data['data_proxima_acao'] = $this->formatar_data_banco_dados($this->anti_sql_injection($_POST['dataProximaAcao']), true);
+			if(!empty($data['id'])) {
+				$this->Prospects_model->upd_record($this->Prospects_model->tabela(), $data);
+				$id_prospect = $data['id'];
+			} else {
+				$data['data_insercao'] = date('Y-m-d H:i:s');
+				$id_prospect = $this->Prospects_model->add_record($this->Prospects_model->tabela(), $data);
+			}
+			if(!empty($id_prospect)) {
+				unset($_POST);
+				/** Gravo log */
+				$this->load->model('Logs_model');
+				$dataLog['acao'] = (!empty($data['id'])?'Atualizacao':'Cadastro').' de prospect';
+				$dataLog['data_acao'] = date('Y-m-d H:i:s');
+				$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
 				if(!empty($data['id'])) {
-					$this->Prospects_model->upd_record($this->Prospects_model->tabela(), $data);
-					$id_prospect = $data['id'];
+					redirect(base_url().'prospects/index/0/prospect_atualizado_com_sucesso');
 				} else {
-					$id_prospect = $this->Prospects_model->add_record($this->Prospects_model->tabela(), $data);
-				}
-				if(!empty($id_prospect)) {
-					unset($_POST);
-					if(!empty($data['id'])) {
-						redirect(base_url().'prospects/index/0/prospect_atualizado_com_sucesso');
-					} else {
-						redirect(base_url().'prospects/index/0/prospect_cadastrado_com_sucesso');
-					}
-				} else {
-					unset($_POST);
-					redirect(base_url().'prospects/index/0/erro_ao_cadastrar_prospect');
+					redirect(base_url().'prospects/index/0/prospect_cadastrado_com_sucesso');
 				}
 			} else {
+				unset($_POST);
 				redirect(base_url().'prospects/index/0/erro_ao_cadastrar_prospect');
 			}
 		} else {
@@ -141,9 +148,48 @@ class Prospects extends Admin {
 	
 	public function excluir($id = null) {
 		if($this->Prospects_model->del_record($this->Prospects_model->tabela(), $id)) {
-			redirect(base_url().'prospects/index/0/usuario_excluido_com_sucesso');
+			/** Gravo log */
+			$this->load->model('Logs_model');
+			$dataLog['acao'] = 'Exclusao de prospect';
+			$dataLog['data_acao'] = date('Y-m-d H:i:s');
+			$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
+			redirect(base_url().'prospects/index/0/prospect_excluido_com_sucesso');
 		} else {
-			redirect(base_url().'prospects/index/0/erro_ao_excluir_usuario');
+			redirect(base_url().'prospects/index/0/erro_ao_excluir_prospect');
 		}
+	}
+	
+	/** Atualizar Status Prospect via AJAX */
+	public function atualizar_status_prospect($idProspect) {
+		$admin = new Admin();
+
+		$data['id'] = (int)$idProspect;
+		$data['acao_id'] = (int)$_POST['acao'];
+
+		if($this->Prospects_model->upd_record($this->Prospects_model->tabela(), $data)) {
+			/** gravo o historico */
+			$dataHistorico['acao'] = 'Atualizacao de Status do Prospect ID '.$idProspect;
+			$dataHistorico['data_acao'] = date('Y-m-d H:i:s');
+			$this->Prospects_model->add_record('historico_acoes', $dataHistorico);
+			echo "1";
+		} else {
+			echo "0";
+		}
+
+		die;
+	}
+	
+	/** todo o Prospect quando criado sera criada ma copia deste Prospect via Procedure. Esta é a listagem destas copias  */
+	public function listar_copias_procedure() {
+		$data['titulo_pagina'] = 'Cópias Prospects Procedure';
+		$data['pagina'] = 'listar_copias_procedure';
+		$filtros = array();
+		$data['prospects_procedure'] = $this->Prospects_model->get_all_procedure();
+		$data['link_css'] = array('assets/css/tablesorter/style.css');
+		$data['scripts_js'] = array('assets/js/tablesorter/jquery.tablesorter.js');
+		$data['temTableSorter'] = 1;
+		$data['acao'] = $this->acao;
+
+		$this->load->view('prospects/listar_copias_procedure',$data);
 	}
 }

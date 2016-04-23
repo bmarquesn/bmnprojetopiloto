@@ -30,13 +30,13 @@
 						?>
 					</select>
 				</p>
-				<p><label for="contatos">Contatos</label><br /><textarea name="contatos" id="contatos" class="form-control"><?php echo isset($prospect)?$prospect[0]->contato:''; ?></textarea></p></label>
+				<p><label for="contatos">Contatos</label><br /><textarea name="contatos" id="contatos" class="form-control"><?php echo isset($prospect)?$prospect[0]->contatos:''; ?></textarea></p></label>
 				<p><label for="acao">Ação</label>
 					<select name="acao" id="acao" class="form-control">
 						<option value="">Selecione</option>
 						<?php
 						foreach($acao as $key => $value) {
-							if(isset($dados) && $key == $prospect[0]->acao_id) {
+							if(isset($prospect) && $key == $prospect[0]->acao_id) {
 								echo '<option value="'.$key.'" selected="selected">'.$value.'</option>';
 							} else {
 								echo '<option value="'.$key.'">'.$value.'</option>';
@@ -45,7 +45,7 @@
 						?>
 					</select>
 				</p>
-				<p><label for="dataProximaAcao">Data Próxima Ação</label><input type="text" name="dataProximaAcao" value="<?php echo isset($prospect)?date('d/m/Y', strtotime($prospect[0]->data_proxima_acao)):''; ?>" class="datepicker form-control" id="dataProximaAcao" /></p>
+				<p><label for="dataProximaAcao">Data Próxima Ação</label><input type="text" name="dataProximaAcao" value="<?php echo isset($prospect)?date('d/m/Y H:i', strtotime($prospect[0]->data_proxima_acao)):''; ?>" class="datepicker form-control" id="dataProximaAcao" /></p>
 				<br />
 				<p><input type="submit" value="Salvar" class="btn btn-default" /> <a href="<?php echo base_url().'admin/usuarios'; ?>" class="btn btn-default">Voltar</a></label>
 			</form>
@@ -62,30 +62,15 @@
 			var acao = $('#acao');
 			var dataProximaAcao = $('#dataProximaAcao');
 			if(nome.val()==''){
-				$('p.alert').find('span').text('O campo NOME deve ser preenchido');
-				$('p.alert').show('fast');
-				nome.focus();
-				valido = false;
+				completed(nome, 'NOME');
 			}else if(setor.val()==''){
-				$('p.alert').find('span').text('O SETOR deve ser selecionado');
-				$('p.alert').show('fast');
-				setor.focus();
-				valido = false;
+				completed(setor, 'SETOR');
 			}else if(contatos.val()==''){
-				$('p.alert').find('span').text('O campo CONTATO deve ser preenchido');
-				$('p.alert').show('fast');
-				contatos.focus();
-				valido = false;
+				completed(contatos, 'Contatos');
 			}else if(acao.val()==''){
-				$('p.alert').find('span').text('A Acao deve ser selecionada');
-				$('p.alert').show('fast');
-				acao.focus();
-				valido = false;
+				completed(acao, 'ACAO');
 			}else if(dataProximaAcao.val()==''){
-				$('p.alert').find('span').text('O campo DATA PRÓXIMA AÇÃO deve ser preenchido');
-				$('p.alert').show('fast');
-				dataProximaAcao.focus();
-				valido = false;
+				completed(dataProximaAcao, 'DATA PROXIMA ACAO');
 			}else{
 				$('p.alert').hide('fast');
 				valido = true;
