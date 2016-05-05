@@ -1,17 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-/**
- * Sistema administrativo de Prospects
- * <pre>14/04/2016</pre>
- * <b>Prospects que serao cadastrados no sistema</b>
- * 
- * @author Bruno Marques <bmarquesn@gmail.com>
- * @name Prospect
- * @license BrunoMarquesNogueira
- * @package Prospects
- * @subpackage Admin
- * @date 14/04/2016
- */
  
  /** biblioteca para ser usada pelo sistema administrativo */
 require_once('admin/Admin.php');

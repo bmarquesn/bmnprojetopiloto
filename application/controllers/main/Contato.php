@@ -1,16 +1,4 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Contato via Email
- * <pre>23/04/2016</pre>
- * <b>Enviar email</b>
- * 
- * @author Bruno Marques <developer@crosshost.com.br>
- * @name Contato
- * @license BrunoMarquesNogueira
- * @package Contato
- * @subpackage Admin
- * @date 23/04/2016
- */
 
 /** biblioteca para ser usada pelo sistema administrativo */
 require_once(APPPATH.'controllers'.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'Admin.php');
