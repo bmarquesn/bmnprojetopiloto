@@ -1,16 +1,4 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Setores
- * <pre>22/04/2016</pre>
- * <b>Setores do sistema</b>
- * 
- * @author Bruno Marques <developer@crosshost.com.br>
- * @name Setores
- * @license BrunoMarquesNogueira
- * @package Setores
- * @subpackage Admin
- * @date 22/04/2016
- */
 
 /** biblioteca para ser usada pelo sistema administrativo */
 require_once('Admin.php');

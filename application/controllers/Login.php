@@ -1,16 +1,4 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Login
- * <pre>14/04/2016</pre>
- * <b>Login no sistema administrativo</b>
- * 
- * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
- * @name Login
- * @license BrunoMarquesNogueira
- * @package CI_Controller
- * @subpackage Login
- * @date 14/04/2016
- */
 
 /** biblioteca para ser usada pelo sistema administrativo */
 require_once('admin/Admin.php');

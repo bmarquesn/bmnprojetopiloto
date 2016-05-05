@@ -1,15 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Funcoes, bibliotecas default para o Sistema
- * <pre>14/04/2016</pre>
- * 
- * @author Bruno Marques <developer@crosshost.com>
- * @name Comuns
- * @license BrunoMarquesNogueira
- * @package Comuns
- * @subpackage PhpQuery
- * @date 14/04/2016
- */
 
 session_start();
 date_default_timezone_set("America/Sao_Paulo");

@@ -1,16 +1,4 @@
 <?php
-/**
- * Model de Usuarios
- * <pre>15/04/2016</pre>
- * Classe de movimenação com a tabela Usuario
- * 
- * @author Bruno Marques <developer@crosshost.com.br>
- * @name Usuario_model
- * @license BrunoMarquesNogueira
- * @package Usuario_Model
- * @subpackage Comuns_model
- * @date 15/04/2016
- */
 require_once('Comuns_model.php');
 
 class Usuario_model extends Comuns_model {

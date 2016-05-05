@@ -1,16 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Utilizar, importar ou criar funcoes, bibliotecas default para o Sistema
- * <pre>14/04/2016</pre>
- * 
- * @author Bruno Marques <developer@crosshost.com>
- * @name Admin
- * @license BrunoMarquesNogueira
- * @package Admin
- * @subpackage Comuns
- * @date 14/04/2016
- */
- 
+
 /** biblioteca padrão para todo o sistema */
 require_once('Comuns.php');
 

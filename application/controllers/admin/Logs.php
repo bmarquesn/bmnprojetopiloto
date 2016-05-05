@@ -1,16 +1,4 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Logs
- * <pre>23/04/2016</pre>
- * <b>Usuários do sistema</b>
- * 
- * @author Bruno Marques <developer@crosshost.com.br>
- * @name Logs
- * @license BrunoMarquesNogueira
- * @package Logs
- * @subpackage Admin
- * @date 15/04/2016
- */
 
 /** biblioteca para ser usada pelo sistema administrativo */
 require_once('Admin.php');

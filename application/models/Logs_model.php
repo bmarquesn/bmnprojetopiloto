@@ -1,16 +1,4 @@
 <?php
-/**
- * Model de Logs
- * <pre>22/04/2016</pre>
- * Classe de movimenação com a tabela Historico_acoes
- * 
- * @author Bruno Marques <bmarquesn@gmail.com>
- * @name Logs_model
- * @license BrunoMarquesNogueira
- * @package Comuns_model
- * @subpackage Logs_model
- * @date 22/04/2016
- */
 require_once('Comuns_model.php');
 
 class Logs_model extends Comuns_model {

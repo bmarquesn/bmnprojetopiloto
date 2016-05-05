@@ -1,16 +1,4 @@
 <?php
-/**
- * Model de Setor
- * <pre>22/04/2016</pre>
- * Classe de movimenação com a tabela Setor
- * 
- * @author Bruno Marques <developer@crosshost.com.br>
- * @name Setor_model
- * @license BrunoMarquesNogueira
- * @package Setor_Model
- * @subpackage Comuns_model
- * @date 22/04/2016
- */
 require_once('Comuns_model.php');
 
 class Setor_model extends Comuns_model {
