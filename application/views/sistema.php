@@ -25,17 +25,17 @@
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Setores</h2>
 					<p>Sistema para inserção, exibição, edição ou remoção ('CRUD') de setores</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'setores'; ?>">Setores</a></p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'admin/setores'; ?>">Setores</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Procedure</h2>
 					<p>Exibicao de Procedures SQL</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'procedure'; ?>">Procedure</a></p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'prospects/listar_copias_procedure'; ?>">Procedure</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>Logs</h2>
 					<p>Histórico de ações no sistema</p>
-					<p><a class="btn btn-success" href="<?php echo base_url().'admin/historico_acoes'; ?>">Histórico</a></p>
+					<p><a class="btn btn-success" href="<?php echo base_url().'admin/logs'; ?>">Histórico</a></p>
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-2">
 					<h2>PHPDoc</h2>
