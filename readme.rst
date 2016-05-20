@@ -2,14 +2,14 @@
 Sistema feito em Codeigneiter e Mysql
 ###################
 
-Coloque os arquivos dentro de seu servidor Apache.
+Coloque os arquivos dentro de seu servidor Apache
 
-Execute em seu banco de dados o arquivo assets/docs/projeto.sql.
+Execute em seu banco de dados o arquivo assets/docs/projeto.sql
 
 Se seu apache estiver usando outra porta atualize no arquivo application/config/config.php a constante $config['base_url']
 
-Para acessar utilize:
-E-mail: teste@teste.com.br
+Para acessar utilize:\n
+E-mail: teste@teste.com.br\n
 Senha: 1234
 
 ###################
