@@ -2,7 +2,7 @@
 Sistema feito em Codeigniter e Mysql
 ###################
 
-Coloque os arquivos dentro de uma pasta do seu servidor Apache. Ex.: C:\xampp\htdocs\bmnprojetopiloto\
+Coloque os arquivos dentro de uma pasta do seu servidor Apache. Ex.: C:\\xampp\\htdocs\\bmnprojetopiloto\\
 
 Execute em seu banco de dados o arquivo assets/docs/projeto.sql
 
