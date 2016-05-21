@@ -75,9 +75,9 @@ class Login extends Admin {
 				} else {
 					$corpo = '<p>Olá Nome Usuario</p>';
 				}
-				$corpo .= '<p>Envio / Reset de senha do sistema de Controle de Jobs Crosshost</p>';
+				$corpo .= '<p>Envio / Reset de senha do sistema do Portfolio de Bruno Marques Nogueira - Desenvolvedor Web</p>';
 				$corpo .= '<p><em>NÃO RESPONDA ESTE EMAIL !!! EMAIL AUTOMÁTICO !!!</em></p>';
-				$corpo .= '<p>Foi feito um pedido de reenvio da sua senha para acessar o painel de Jobs Crosshost</p>';
+				$corpo .= '<p>Foi feito um pedido de reenvio da sua senha para acessar o sistema do Portfolio de Bruno Marques Nogueira</p>';
 				$corpo .= '<p>Sua nova senha é <strong>'.$novaSenha.'</strong></p>';
 				
 				if($this->envioMensagem('developer.bmn@gmail.com', 'Bruno Marques Nogueira - Gerente Web', $dadosUsuario[0]->nome, $dadosUsuario[0]->email, 'Recuperacao / Reset de Senha do painel de Prospects', $corpo)) {
