@@ -80,7 +80,7 @@ class Login extends Admin {
 				$corpo .= '<p>Foi feito um pedido de reenvio da sua senha para acessar o sistema do Portfolio de Bruno Marques Nogueira</p>';
 				$corpo .= '<p>Sua nova senha é <strong>'.$novaSenha.'</strong></p>';
 				
-				if($this->envioMensagem('developer.bmn@gmail.com', 'Bruno Marques Nogueira - Gerente Web', $dadosUsuario[0]->nome, $dadosUsuario[0]->email, 'Recuperacao / Reset de Senha do painel de Prospects', $corpo)) {
+				if($this->envioMensagem('developer.bmn@gmail.com', 'Bruno Marques Nogueira - Gerente Web', $dadosUsuario[0]->nome, $dadosUsuario[0]->email, 'Recuperacao / Reset de Senha do painel do Portfolio de Bruno Marques Nogueira', $corpo)) {
 					$resposta = 'senha_enviada_com_sucesso';
 				} else {
 					$resposta = 'erro_ao_enviar_a_senha';
