@@ -1,12 +1,12 @@
 ###################
-Sistema feito em Codeigneiter e Mysql
+Sistema feito em Codeigniter e Mysql
 ###################
 
-Coloque os arquivos dentro de seu servidor Apache
+Coloque os arquivos dentro de uma pasta do seu servidor Apache. Ex.: C:\xampp\htdocs\bmnprojetopiloto\
 
 Execute em seu banco de dados o arquivo assets/docs/projeto.sql
 
-Se seu apache estiver usando outra porta atualize no arquivo application/config/config.php a constante $config['base_url']
+Se seu apache estiver usando outra porta (diferente da 80) atualize no arquivo application/config/config.php a constante $config['base_url']. Ex.: $config['base_url'] = 'http://localhost:70/bmnprojetopiloto/';
 
 Para acessar utilize:
 
