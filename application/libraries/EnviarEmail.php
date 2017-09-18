@@ -16,7 +16,7 @@ class EnviarEmail {
 		$mail->Port = 465; 
 		//$mail->Port = 587;
 		$mail->Username = 'developer.bmn@gmail.com'; // Usuário do servidor SMTP
-		$mail->Password = 'bruno696999'; // Senha do servidor SMTP
+		$mail->Password = 'bmnjob666'; // Senha do servidor SMTP
 
 		// Define o remetente
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
