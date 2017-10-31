@@ -13,8 +13,8 @@ class EnviarEmail {
 		$mail->SMTPAuth = true; // Usa autenticação SMTP? (opcional)
 		//$mail->SMTPDebug = true;
 		$mail->SMTPSecure = 'ssl';
-		$mail->Port = 465; 
-		//$mail->Port = 587;
+		//$mail->Port = 465; 
+		$mail->Port = 587;
 		$mail->Username = 'developer.bmn@gmail.com'; // Usuário do servidor SMTP
 		$mail->Password = 'epdqhljuqhkcyijm'; // Senha do servidor SMTP
 
