@@ -10,9 +10,20 @@
  * @package Usuarios
  * @subpackage Admin
  * @date 15/04/2016
+ *
+ * ---
+ *
+ * Usuarios Atualização
+ * <pre>15/02/2018</pre>
+ * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
+ *
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @name Usuarios
+ * @license BrunoMarquesNogueira
+ * @package Usuarios
+ * @subpackage Admin
+ * @date 15/02/2018
  */
-
-/** biblioteca para ser usada pelo sistema administrativo */
 require_once('Admin.php');
 
 class Usuarios extends Admin {
