@@ -45,6 +45,11 @@ class Contato extends Admin {
 			} else {
 				$data['mensagem_enviada'] = 'Erro ao enviar a mensagem... tente novamente...';
 			}
+			/** Gravo log */
+			$this->load->model('Logs_model');
+			$dataLog['acao'] = $data['mensagem_enviada'];
+			$dataLog['data_acao'] = date('Y-m-d H:i:s');
+			$this->Logs_model->add_record($this->Logs_model->tabela(), $dataLog);
 		}
 		$data['titulo_pagina'] = 'Contato';
 		$data['pagina'] = 'contato';
