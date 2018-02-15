@@ -1,7 +1,24 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-/** biblioteca padrão para todo o sistema */
-/** 15/02/2018 - Por estar dentro do PHP Query a integração com o Codeigniter, esta classe Comuns precisará sempre ser instanciada */
+/**
+ * Admin
+ * <pre>15/04/2016</pre>
+ * <b>Admin do sistema</b>
+ * 
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @name Admin
+ * @license BrunoMarquesNogueira
+ * @package Admin
+ * @date 15/04/2016
+ *
+ * ---
+ *
+ * Admin Atualização
+ * <pre>15/02/2018</pre>
+ * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
+ *
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @date 15/02/2018
+ */
 require_once('Comuns.php');
 
 class Admin extends Comuns {
