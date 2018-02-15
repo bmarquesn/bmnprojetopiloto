@@ -6,6 +6,7 @@ date_default_timezone_set("America/Sao_Paulo");
 include APPPATH.'third_party/PhpQuery.php';
 
 /** Está dentro de PhpQuery a integração com o Codeigneiter */
+/** 15/02/2018 - Por estar dentro do PHP Query a integração com o Codeigniter, esta classe Comuns precisará sempre ser instanciada */
 class Comuns extends PhpQuery {
 	/*funcoes, metodos comuns para o sistema*/
 	protected $hash_senha = "_3ncr1pt*p455w0rd_";
