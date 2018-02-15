@@ -1,6 +1,26 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-/** biblioteca para ser usada pelo sistema administrativo */
+/**
+ * Contato
+ * <pre>15/04/2016</pre>
+ * <b>Contato com o sistema</b>
+ * 
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @name Contato
+ * @license BrunoMarquesNogueira
+ * @package Contato
+ * @subpackage Admin
+ * @date 15/04/2016
+ *
+ * ---
+ *
+ * Contato Atualização
+ * <pre>15/02/2018</pre>
+ * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
+ *
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @date 15/02/2018
+ */
 require_once(APPPATH.'controllers'.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'Admin.php');
 
 class Contato extends Admin {
