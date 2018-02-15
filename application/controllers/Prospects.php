@@ -1,7 +1,27 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
  
- /** biblioteca para ser usada pelo sistema administrativo */
+ /**
+ * Prospects
+ * <pre>15/04/2016</pre>
+ * <b>Prospects do sistema</b>
+ * 
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @name Prospects
+ * @license BrunoMarquesNogueira
+ * @package Prospects
+ * @subpackage Admin
+ * @date 15/04/2016
+ *
+ * ---
+ *
+ * Prospects Atualização
+ * <pre>15/02/2018</pre>
+ * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
+ *
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @date 15/02/2018
+ */
 require_once('admin/Admin.php');
 
 class Prospects extends Admin {
