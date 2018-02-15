@@ -16,7 +16,7 @@ class EnviarEmail {
 		//$mail->Port = 465; 
 		$mail->Port = 587;
 		$mail->Username = 'developer.bmn@gmail.com'; // Usuário do servidor SMTP
-		$mail->Password = 'epdqhljuqhkcyijm'; // Senha do servidor SMTP
+		$mail->Password = 'senhaprojetobmn'; // Senha do servidor SMTP
 
 		// Define o remetente
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -33,7 +33,7 @@ class EnviarEmail {
 				$mail->AddCC($value['email'], $value['nome']); // Copia
 			}
 		}
-		//$mail->AddBCC('developer@crosshost.com.br', 'Developer Crosshost'); // Cópia Oculta
+		//$mail->AddBCC('bmarquesn@gmail.com', 'Developer Crosshost'); // Cópia Oculta
 
 		// Define os dados técnicos da Mensagem
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

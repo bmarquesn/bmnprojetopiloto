@@ -4,7 +4,7 @@
  * <pre>23/04/2016</pre>
  * <b>Usuários do sistema</b>
  * 
- * @author Bruno Marques <developer@crosshost.com.br>
+ * @author Bruno Marques <bmarquesn@gmail.com>
  * @name Documentacao_phpdoc
  * @license BrunoMarquesNogueira
  * @package Documentacao_phpdoc

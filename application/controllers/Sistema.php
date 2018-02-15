@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * <pre>15/04/2016</pre>
  * <b>Sistema principal</b>
  * 
- * @author Bruno Marques <developer@crosshost.com.br>
+ * @author Bruno Marques <bmarquesn@gmail.com>
  * @name Sistema
  * @license BrunoMarquesNogueira
  * @package Sistema
@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <developer@crosshost.com.br>
+ * @author Bruno Marques <bmarquesn@gmail.com>
  * @date 15/02/2018
  */
 require_once('admin/Admin.php');
