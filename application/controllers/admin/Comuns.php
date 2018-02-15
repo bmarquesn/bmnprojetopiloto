@@ -8,7 +8,7 @@
  * @name Comuns
  * @license BrunoMarquesNogueira
  * @package Comuns
- * @subpackage Admin
+ * @subpackage PhpQuery
  * @date 15/04/2016
  *
  * ---
