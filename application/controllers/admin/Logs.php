@@ -1,6 +1,7 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 /** biblioteca para ser usada pelo sistema administrativo */
+/** 15/02/2018 - Por estar dentro do PHP Query a integração com o Codeigniter, esta classe Comuns precisará sempre ser instanciada */
 require_once('Admin.php');
 
 class Logs extends Admin {
