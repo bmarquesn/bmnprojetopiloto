@@ -1,4 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * Comuns
+ * <pre>15/04/2016</pre>
+ * <b>Funções comuns para o sistema</b>
+ * 
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @name Comuns
+ * @license BrunoMarquesNogueira
+ * @package Comuns
+ * @subpackage Admin
+ * @date 15/04/2016
+ *
+ * ---
+ *
+ * Comuns Atualização
+ * <pre>15/02/2018</pre>
+ * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
+ *
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @date 15/02/2018
+ */
 
 session_start();
 date_default_timezone_set("America/Sao_Paulo");
@@ -6,7 +27,6 @@ date_default_timezone_set("America/Sao_Paulo");
 include APPPATH.'third_party/PhpQuery.php';
 
 /** Está dentro de PhpQuery a integração com o Codeigneiter */
-/** 15/02/2018 - Por estar dentro do PHP Query a integração com o Codeigniter, esta classe Comuns precisará sempre ser instanciada */
 class Comuns extends PhpQuery {
 	/*funcoes, metodos comuns para o sistema*/
 	protected $hash_senha = "_3ncr1pt*p455w0rd_";
