@@ -18,10 +18,6 @@
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
  * @author Bruno Marques <developer@crosshost.com.br>
- * @name Usuarios
- * @license BrunoMarquesNogueira
- * @package Usuarios
- * @subpackage Admin
  * @date 15/02/2018
  */
 require_once('Admin.php');
