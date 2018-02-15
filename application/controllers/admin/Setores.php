@@ -1,7 +1,25 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
-
-/** biblioteca para ser usada pelo sistema administrativo */
-/** 15/02/2018 - Por estar dentro do PHP Query a integração com o Codeigniter, esta classe Comuns precisará sempre ser instanciada */
+*
+ * Setores
+ * <pre>15/04/2016</pre>
+ * <b>Setores do sistema</b>
+ * 
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @name Setores
+ * @license BrunoMarquesNogueira
+ * @package Setores
+ * @subpackage Admin
+ * @date 15/04/2016
+ *
+ * ---
+ *
+ * Setores Atualização
+ * <pre>15/02/2018</pre>
+ * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
+ *
+ * @author Bruno Marques <developer@crosshost.com.br>
+ * @date 15/02/2018
+ */
 require_once('Admin.php');
 
 class Setores extends Admin {
