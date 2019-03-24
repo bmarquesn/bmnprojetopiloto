@@ -6,7 +6,7 @@ Coloque os arquivos dentro de uma pasta do seu servidor Apache. Ex.: C:\\xampp\\
 
 Execute em seu banco de dados o arquivo assets/docs/projeto.sql
 
-Se seu apache estiver usando outra porta (diferente da 80) atualize no arquivo application/config/config.php a constante $config['base_url']. Ex.: $config['base_url'] = 'http://localhost:70/bmnprojetopiloto/';
+Se seu apache estiver usando outra porta (diferente da 80) atualize no arquivo application/config/config.php a constante $config['base_url']. Ex.: $config['base_url'] = 'http://localhost/bmnprojetopiloto/';
 
 Para acessar utilize:
 

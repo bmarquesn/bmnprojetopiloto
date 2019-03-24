@@ -16,7 +16,8 @@ class EnviarEmail {
 		//$mail->Port = 465; 
 		$mail->Port = 587;
 		$mail->Username = 'developer.bmn@gmail.com'; // Usuário do servidor SMTP
-		$mail->Password = 'senhaprojetobmn'; // Senha do servidor SMTP
+		//$mail->Password = 'senhaprojetobmn'; // Senha do servidor SMTP
+		$mail->Password = 'dyzxmzqcropbtijj'; // Senha do servidor SMTP
 
 		// Define o remetente
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -56,13 +57,13 @@ class EnviarEmail {
 		//$mail->AddAttachment("c:/temp/documento.pdf", "novo_nome.pdf");  // Insere um anexo
 
 		// Envia o e-mail
-		/*if($mail->Send()) {
+		if($mail->Send()) {
 			$enviado = true;
 		} else {
 			$enviado = false;
 			var_dump('Mailer Error: ' . $mail->ErrorInfo);
 			die;
-		}*/
+		}
 		$enviado = true;
 		$mail->Send();
 
