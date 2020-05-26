@@ -20,7 +20,12 @@
 				<li<?php if(isset($pagina) && $pagina === 'setores'){echo ' class="active"';}?>><a href="<?php echo base_url().'admin/setores'; ?>">Setores</a></li>
 				<li<?php if(isset($pagina) && $pagina === 'listar_copias_procedure'){echo ' class="active"';}?>><a href="<?php echo base_url().'prospects/listar_copias_procedure'; ?>">Procedure</a></li>
 				<li<?php if(isset($pagina) && $pagina === 'logs'){echo ' class="active"';}?>><a href="<?php echo base_url().'admin/logs'; ?>">Logs</a></li>
-				<li<?php if(isset($pagina) && $pagina === 'phpdoc'){echo ' class="active"';}?>><a href="<?php echo base_url().'documentacao_phpdoc'; ?>">PHPDoc</a></li>
+				<?php
+				/**
+				 * Retirado, por enquanto, o PHPDoc
+				 * <li<?php if(isset($pagina) && $pagina === 'phpdoc'){echo ' class="active"';}?>><a href="<?php echo base_url().'documentacao_phpdoc'; ?>">PHPDoc</a></li>
+				 */
+				?>
 				<li<?php if(isset($pagina) && $pagina === 'contato'){echo ' class="active"';}?>><a href="<?php echo base_url().'main/contato'; ?>">Contato</a></li>
 			</ul>
 			<div style="position:relative;left:10px;"><a href="<?php echo base_url().'sistema/sair'; ?>" class="btn btn-danger" onclick="return confirm('Deseja mesmo sair do sistema?')">Sair</a></div>

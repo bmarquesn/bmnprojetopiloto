@@ -4,7 +4,7 @@
  * <pre>15/04/2016</pre>
  * <b>Logs do sistema</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Logs
  * @license BrunoMarquesNogueira
  * @package Logs
@@ -17,8 +17,17 @@
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
+ * 
+ * ---
+ * 
+ * Inserido template nas views para as páginas internas
+ * <pre>26/05/2020</pre>
+ * <b>Template padrão para as páginas internas</b>
+ * 
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
+ * @date 25/05/2020
  */
 require_once('Admin.php');
 
@@ -78,7 +87,9 @@ class Logs extends Admin {
 			}
 		}
 		$data['historico_acoes'] = $historico_acoes;
+
+		$data['pagina_atual'] = 'admin/logs/listar';
 		
-		$this->load->view('admin/logs/listar', $data);
+		$this->load->view('template_paginas_internas', $data);
 	}
 }

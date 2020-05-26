@@ -4,7 +4,7 @@
  * <pre>15/04/2016</pre>
  * <b>Setores do sistema</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Setores
  * @license BrunoMarquesNogueira
  * @package Setores
@@ -17,8 +17,17 @@
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
+ * 
+ * ---
+ * 
+ * Inserido template nas views para as páginas internas
+ * <pre>26/05/2020</pre>
+ * <b>Template padrão para as páginas internas</b>
+ * 
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
+ * @date 25/05/2020
  */
 require_once('Admin.php');
 
@@ -73,8 +82,10 @@ class Setores extends Admin {
 		} elseif(isset($_GET['msg']) && !empty(isset($_GET['msg']))) {
 			$data['msg'] = ucfirst(str_replace('_', ' ', $_GET['msg']));
 		}
+
+		$data['pagina_atual'] = 'admin/setores/listar';
 		
-		$this->load->view('admin/setores/listar', $data);
+		$this->load->view('template_paginas_internas', $data);
 	}
 	
 	public function cadastrar($id = null) {
@@ -120,7 +131,11 @@ class Setores extends Admin {
 					redirect(base_url().'admin/setores/index/0/nao_foi_possivel_selecionar_setor');
 				}
 			}
-			$this->load->view('admin/setores/cadastrar', $data);
+
+			$data['scripts_js'] = array('assets/js/setores.js');
+			$data['pagina_atual'] = 'admin/setores/cadastrar';
+		
+			$this->load->view('template_paginas_internas', $data);
 		}
 	}
 	

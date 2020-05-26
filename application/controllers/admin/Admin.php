@@ -4,7 +4,7 @@
  * <pre>15/04/2016</pre>
  * <b>Admin do sistema</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Admin
  * @license BrunoMarquesNogueira
  * @package Admin
@@ -17,14 +17,14 @@
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
  */
 require_once('Comuns.php');
 
 class Admin extends Comuns {
 	public $checarSessao = 0;
-	public $itensPorPagina = 10;
+	public $itensPorPagina = 2;
 	
 	public function __construct(){
 		parent::__construct();

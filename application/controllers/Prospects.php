@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * <pre>15/04/2016</pre>
  * <b>Prospects do sistema</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Prospects
  * @license BrunoMarquesNogueira
  * @package Prospects
@@ -19,8 +19,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
+ * 
+ * ---
+ * 
+ * Inserido template nas views para as páginas internas
+ * <pre>26/05/2020</pre>
+ * <b>Template padrão para as páginas internas</b>
+ * 
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
+ * @date 25/05/2020
  */
 require_once('admin/Admin.php');
 
@@ -94,8 +103,10 @@ class Prospects extends Admin {
 		if(isset($data['msg']) && $data['msg'] === 'Nao ha setores cadastrados antes cadastre um') {
 			$data['msg'] = 'Nao ha setores cadastrados antes <a href="'.base_url().'admin/setores/cadastrar">cadastre um</a>';
 		}
+
+		$data['pagina_atual'] = 'prospects/listar';
 		
-		$this->load->view('prospects/listar', $data);
+		$this->load->view('template_paginas_internas', $data);
 	}
 
 	/** Salva o Prospect no BD */
@@ -148,8 +159,11 @@ class Prospects extends Admin {
 					$data['prospect'] = $this->Prospects_model->get_all_where($this->Prospects_model->tabela(), 'id', $this->anti_sql_injection($id));
 				}
 				$data['acao'] = $this->acao;
-				//var_dump($data['setores']);die;
-				$this->load->view('prospects/cadastrar', $data);
+
+				$data['pagina_atual'] = 'prospects/cadastrar';
+				$data['scripts_js'] = array('assets/js/prospects.js');
+		
+				$this->load->view('template_paginas_internas', $data);
 			}
 		}
 	}
@@ -198,6 +212,8 @@ class Prospects extends Admin {
 		$data['temTableSorter'] = 1;
 		$data['acao'] = $this->acao;
 
-		$this->load->view('prospects/listar_copias_procedure',$data);
+		$data['pagina_atual'] = 'prospects/listar_copias_procedure';
+		
+		$this->load->view('template_paginas_internas', $data);
 	}
 }

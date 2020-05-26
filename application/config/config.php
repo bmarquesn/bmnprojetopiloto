@@ -25,10 +25,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if($_SERVER['SERVER_NAME'] === "localhost") {
 	define("SERVIDOR", "local");
-	$config['base_url'] = 'http://localhost/bmnprojetopiloto/';
+	$config['base_url'] = 'http://localhost:8080/bmnprojetopiloto/';
 } else {
 	define("SERVIDOR", "remoto");
-	$config['base_url'] = 'http://localhost/bmnprojetopiloto/';
+	$config['base_url'] = 'http://www.bmnprojetopiloto.com.br';
 }
 
 /*

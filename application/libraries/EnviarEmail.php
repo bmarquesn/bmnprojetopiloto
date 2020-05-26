@@ -1,6 +1,6 @@
 <?php
 class EnviarEmail {
-	public function enviar_email($From,$FromName,$addNameAddress,$AddAddress,$Subject,$Body,$AltBody = null,$addCC = null) {
+	public function enviar_email($From, $FromName, $addNameAddress, $AddAddress, $Subject, $Body, $AltBody = null, $addCC = null) {
 		require_once("PHPMailer/PHPMailerAutoload.php");
 		
 		// Inicia a classe PHPMailer
@@ -13,11 +13,10 @@ class EnviarEmail {
 		$mail->SMTPAuth = true; // Usa autenticação SMTP? (opcional)
 		//$mail->SMTPDebug = true;
 		$mail->SMTPSecure = 'ssl';
-		//$mail->Port = 465; 
-		$mail->Port = 587;
+		$mail->Port = 465; 
+		//$mail->Port = 587;
 		$mail->Username = 'developer.bmn@gmail.com'; // Usuário do servidor SMTP
-		//$mail->Password = 'senhaprojetobmn'; // Senha do servidor SMTP
-		$mail->Password = 'dyzxmzqcropbtijj'; // Senha do servidor SMTP
+		$mail->Password = 'fwrjcwfaqlqdrltt'; // Senha do servidor SMTP
 
 		// Define o remetente
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -26,7 +25,6 @@ class EnviarEmail {
 
 		// Define os destinatário(s)
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-		//$mail->AddAddress('fulano@dominio.com.br', 'Fulano da Silva');
 		$mail->AddAddress($AddAddress, $addNameAddress);
 		
 		if(!empty($addCC)) {
@@ -44,13 +42,9 @@ class EnviarEmail {
 		// Define a mensagem (Texto e Assunto)
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		$mail->Subject  = $Subject; // Assunto da mensagem
-		$mail->Body = utf8_decode(nl2br($Body));
+		$mail->Body = nl2br($Body);
 		
-		if(!empty($AltBody)) {
-			$mail->AltBody = utf8_decode($AltBody);
-		} else {
-			$mail->AltBody = strip_tags($mail->Body);
-		}
+		$mail->AltBody = strip_tags($mail->Body);
 
 		// Define os anexos (opcional)
 		// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -64,6 +58,7 @@ class EnviarEmail {
 			var_dump('Mailer Error: ' . $mail->ErrorInfo);
 			die;
 		}
+
 		$enviado = true;
 		$mail->Send();
 

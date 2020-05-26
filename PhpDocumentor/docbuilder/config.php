@@ -443,7 +443,7 @@ var screenShots = new Array();
 			<td valign="top">
 				<?php
 				if(!file_exists($_SESSION['endereco_pasta'].'documentacaoProspects'.DIRECTORY_SEPARATOR)) {
-					mkdir("/documentacaoProspects", 0777);
+					mkdir($_SESSION['endereco_pasta'].'documentacaoProspects', 0777);
 				}
 				?>
 				<input type="text" name="setting_target" size="60" class="text" value="<?php echo $_SESSION['endereco_pasta'].'documentacaoProspects'; ?>" />

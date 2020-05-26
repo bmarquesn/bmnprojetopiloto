@@ -4,7 +4,7 @@
  * <pre>15/04/2016</pre>
  * <b>Usuários do sistema</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Usuarios
  * @license BrunoMarquesNogueira
  * @package Usuarios
@@ -17,10 +17,19 @@
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
+ * 
+ * ---
+ * 
+ * Inserido template nas views para as páginas internas
+ * <pre>26/05/2020</pre>
+ * <b>Template padrão para as páginas internas</b>
+ * 
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
+ * @date 25/05/2020
  */
-require_once('Admin.php');
+include('Admin.php');
 
 class Usuarios extends Admin {
 	public function __construct(){
@@ -71,6 +80,7 @@ class Usuarios extends Admin {
 		$data['scripts_js'] = array('assets/js/tablesorter/jquery.tablesorter.js');
 		$data['temTableSorter'] = 1;
 		$data['usuarios'] = $usuarios;
+		$data['pagina_atual'] = 'admin/usuarios/listar';
 		
 		if(!empty($msg)) {
 			$data['msg'] = ucfirst(str_replace('_', ' ', $msg));
@@ -78,7 +88,7 @@ class Usuarios extends Admin {
 			$data['msg'] = ucfirst(str_replace('_', ' ', $_GET['msg']));
 		}
 		
-		$this->load->view('admin/usuarios/listar', $data);
+		$this->load->view('template_paginas_internas', $data);
 	}
 	
 	public function cadastrar($id = null) {
@@ -86,18 +96,21 @@ class Usuarios extends Admin {
 		if(isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['email']) && !empty($_POST['email'])) {
 			if($this->valida_email($_POST['email'])) {
 				/** salvo os dados do usuario para pegar o ID */
-				$data['id'] = $this->anti_sql_injection($_POST['id']);
+				$data['id'] = $this->anti_sql_injection($_POST['id_usuario']);
 				$data['nome'] = $this->anti_sql_injection($_POST['nome']);
 				$data['email'] = $this->anti_sql_injection($_POST['email']);
+				
 				if(isset($_POST['senha']) && !empty($_POST['senha'])) {
 					$data['senha'] = md5($this->anti_sql_injection($_POST['senha']).$this->hash_senha());
 				}
+				
 				if(!empty($data['id'])) {
 					$this->Usuario_model->upd_record($this->Usuario_model->tabela(), $data);
 					$id_usuario = $data['id'];
 				} else {
 					$id_usuario = $this->Usuario_model->add_record($this->Usuario_model->tabela(), $data);
 				}
+				
 				if(!empty($id_usuario)) {
 					unset($_POST);
 					/** Gravo log */
@@ -123,8 +136,10 @@ class Usuarios extends Admin {
 			} else {
 				$data['titulo_pagina'] = 'Cadastrar';
 			}
+			
 			$data['pagina'] = 'usuarios';
 			$data['colorpicker'] = 1;
+			
 			if(!empty($id)) {
 				/** dados edicao */
 				$data['usuario'] = $this->Usuario_model->get_all_where($this->Usuario_model->tabela(), 'id', $this->anti_sql_injection($id));
@@ -132,7 +147,11 @@ class Usuarios extends Admin {
 					redirect(base_url().'admin/usuarios/index/0/nao_foi_possivel_selecionar_usuario');
 				}
 			}
-			$this->load->view('admin/usuarios/cadastrar', $data);
+
+			$data['pagina_atual'] = 'admin/usuarios/cadastrar';
+			$data['scripts_js'] = array('assets/js/usuarios.js');
+
+			$this->load->view('template_paginas_internas', $data);
 		}
 	}
 	
@@ -154,9 +173,16 @@ class Usuarios extends Admin {
 	}
 	
 	public function verificar_email_existente() {
-		$email = isset($_POST['email'])?$this->anti_sql_injection($_POST['email']):0;
+		$email = isset($_POST['email'])?$this->anti_sql_injection($_POST['email'], false):0;
+		$id_usuario_email = isset($_POST['id'])?$this->anti_sql_injection((int)$_POST['id'], false):0;
+		
 		if(!empty($email)) {
-			$usuario = $this->Usuario_model->get_all_where($this->Usuario_model->tabela(), 'email', $email);
+			if(!empty($id_usuario_email)) {
+				$usuario = $this->Usuario_model->get_all_where($this->Usuario_model->tabela(), array('email', 'id !='), array($email, $id_usuario_email));
+			} else {
+				$usuario = $this->Usuario_model->get_all_where($this->Usuario_model->tabela(), 'email', $email);
+			}
+
 			if(!empty($usuario)) {
 				echo '1';
 			} else {

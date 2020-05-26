@@ -5,7 +5,7 @@ class Comuns_model extends CI_Model {
 		return $this->tabela;
 	}
 	
-	function get_all_where($table, $field, $option, $ativo = null, $order = null, $type_order = null) {
+	function get_all_where($table, $field, $option, $ativo = null, $order = null, $type_order = null, $debug = false) {
 		$this->db->select('*');
 		
 		if(is_array($field)) {
@@ -18,9 +18,9 @@ class Comuns_model extends CI_Model {
 		
 		if($ativo != null) {
 			if($ativo != 1) {
-				$this->db->where('ativo',0);
+				$this->db->where('ativo', 0);
 			} else {
-				$this->db->where('ativo',1);
+				$this->db->where('ativo', 1);
 			}
 		}
 		
@@ -33,9 +33,13 @@ class Comuns_model extends CI_Model {
 		}
 
 		$data = $this->db->get($table);
-		//var_dump($this->db->last_query());die;
-
-		return $data->result();
+		
+		if(!$debug) {
+			return $data->result();
+		} else {
+			var_dump($this->db->last_query());
+			exit;
+		}
 	}
 	
 	function get_all_where_in($table, $field, $option, $ativo = null, $not_in = null) {
@@ -170,9 +174,9 @@ class Comuns_model extends CI_Model {
 		return $return;
 	}
 
-	function upd_record($table, $options = array(), $campo_atualizar = null) {
+	function upd_record($table, $options = array(), $campo_atualizar = null, $debug = false) {
 		if(isset($options['id']) && empty($campo_atualizar)) {
-			$this->db->where('id',$options['id']);
+			$this->db->where('id', $options['id']);
 		} else {
 			/** aqui verifico chaves primarias compostas */
 			if(strpos($campo_atualizar, ',') !== false) {
@@ -185,10 +189,13 @@ class Comuns_model extends CI_Model {
 			}
 		}
 		
-		$this->db->update($table,$options);
-		//var_dump($this->db->last_query());die;
-
-		return $this->db->affected_rows();//active records
+		if($debug) {
+			var_dump($this->db->last_query());
+			exit;
+		} else {
+			$this->db->update($table, $options);
+			return $this->db->affected_rows();//active records
+		}
 	}
 
 	function del_record($table, $id, $ativo = false, $campo_nao_id = null) {

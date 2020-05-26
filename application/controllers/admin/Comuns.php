@@ -4,7 +4,7 @@
  * <pre>15/04/2016</pre>
  * <b>Funções comuns para o sistema</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Comuns
  * @license BrunoMarquesNogueira
  * @package Comuns
@@ -17,7 +17,7 @@
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
  */
 
@@ -47,15 +47,15 @@ class Comuns extends PhpQuery {
 	public function anti_sql_injection($sql, $array=false) {
 		if($array){
 			foreach($sql as $k => $c) {
-				$c = preg_replace("/(from|select|insert|delete|truncate|where|drop table|show tables|#|\*|--|\\\\)/","",$c);
+				$c = preg_replace("/(from|select|insert|delete|truncate|where|drop table|show tables|#|\*|--|\\\\)/", "", $c);
 				$c = trim($c);
 				$c = strip_tags($c);
 				$c = get_magic_quotes_gpc()==0?addslashes($c):$c;
 				$sql[$k] = $c;
-				return $sql;
 			}
+			return $sql;
 		}else{
-			$sql = preg_replace("/(from|select|insert|delete|truncate|where|drop table|show tables|#|\*|--|\\\\)/","",$sql);
+			$sql = preg_replace("/(from|select|insert|delete|truncate|where|drop table|show tables|#|\*|--|\\\\)/", "", $sql);
 			$sql = trim($sql);
 			$sql = strip_tags($sql);
 			$sql = get_magic_quotes_gpc()==0?addslashes($sql):$sql;

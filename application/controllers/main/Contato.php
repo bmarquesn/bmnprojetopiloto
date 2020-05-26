@@ -5,7 +5,7 @@
  * <pre>15/04/2016</pre>
  * <b>Contato com o sistema</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Contato
  * @license BrunoMarquesNogueira
  * @package Contato
@@ -18,7 +18,7 @@
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
  */
 require_once(APPPATH.'controllers'.DIRECTORY_SEPARATOR.'admin'.DIRECTORY_SEPARATOR.'Admin.php');
@@ -53,6 +53,10 @@ class Contato extends Admin {
 		}
 		$data['titulo_pagina'] = 'Contato';
 		$data['pagina'] = 'contato';
-		$this->load->view('contato', $data);
+
+		$data['scripts_js'] = array('assets/js/contato.js');
+		$data['pagina_atual'] = 'contato';
+		
+		$this->load->view('template_paginas_internas', $data);
 	}
 }

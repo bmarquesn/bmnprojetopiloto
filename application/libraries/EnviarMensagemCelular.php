@@ -5,7 +5,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * <pre>12/02/2016</pre>
  * Classe para encio de Push Notifications para Celulares cadastrados no site
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name EnviarMensagemCelular
  * @license BrunoMarquesNogueira
  * @package EnviarMensagemCelular

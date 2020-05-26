@@ -5,7 +5,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * <pre>23/03/2015</pre>
  * Classe para criação de paginação dos dados do sistema
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Paginator
  * @license BrunoMarquesNogueira
  * @package Paginator

@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * <pre>15/04/2016</pre>
  * <b>Sistema principal</b>
  * 
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @name Sistema
  * @license BrunoMarquesNogueira
  * @package Sistema
@@ -18,10 +18,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * <pre>15/02/2018</pre>
  * <b>Explicação do porque a Classe Comuns precisará sempre ser instanciada: Está dentro do PHP Query a integração com o Codeigniter</b>
  *
- * @author Bruno Marques <bmarquesn@gmail.com>
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
  * @date 15/02/2018
+ * 
+ * ---
+ * 
+ * Inserido template nas views para as páginas internas
+ * <pre>26/05/2020</pre>
+ * <b>Template padrão para as páginas internas</b>
+ * 
+ * @author Bruno Marques Nogueira <bmarquesn@gmail.com>
+ * @date 25/05/2020
  */
-require_once('admin/Admin.php');
+include('admin/Admin.php');
 
 class Sistema extends Admin {
 	public function __construct(){
@@ -31,11 +40,16 @@ class Sistema extends Admin {
 	}
 
 	public function index()	{
-		$this->load->view('sistema');
+		$data['pagina_atual'] = 'sistema';
+
+		$this->load->view('template_paginas_internas', $data);
 	}
 	
 	public function sair() {
-		unset($_SESSION['admin']);
+		if(isset($_SESSION['admin'])) {
+			unset($_SESSION['admin']);
+		}
+		
 		redirect(base_url().'login');
 	}
 }

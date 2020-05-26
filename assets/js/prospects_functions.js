@@ -101,27 +101,43 @@ $(document).ready( function() {
 /*validates form*/
 //Function that checks if the field is empty
 function completed(field, name){
-	if (field.val() != ''){
-		return true;
+	var retorno;
+	if (field.val().trim()!=''){
+		retorno=true;
 	}else{
 		$('.alert.bg-danger span').html('O campo '+name+' deve ser preenchido');
 		$('.alert.bg-danger').show('fast');
 		field.focus();
-		return false;
+		retorno=false;
 	}
+	return retorno;
 }
 
 //Function that checks if valid email
 function validEmail(field, name){
-    var value_field = $(field).val();
-    if ((/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value_field)) || (!value_field)) {
-        return true;
+	var value_field = $(field).val().trim();
+	var retorno;
+    if ((/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value_field)) || (!value_field)) {
+        retorno=true;
     } else {
         $('.alert.bg-danger span').html('O campo ' + name + ' deve ser um email válido.');
 		$('.alert.bg-danger').show('fast');
         $(field).focus();
-        return false;
-    }
+        retorno=false;
+	}
+	return retorno;
+}
+function valida_email(campo) {
+	var value_field=$(campo).val().trim();
+	var valido=false;
+	//if ((/^[a-z0-9.]+@[a-z0-9]+(\.[a-z]{2,3})+\)?$/i.test(value_field))) {
+	if ((/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i.test(value_field))) {
+		valido = true;
+	} else {
+		$(campo).focus();
+		valido = false;
+	}
+	return valido;
 }
 
 function confirmar_exclusao(tipo){
@@ -191,4 +207,9 @@ function atualizarStatusProspect(prospectSelecionado,acaoId) {
         	$('.carregando').fadeOut('fast');
         }
     });
+}
+
+function exibirMensagem(mensagem){
+	$('#modalExibirMensagem').find('.modal-body').children('p').text(mensagem);
+	$('#modalExibirMensagem').modal();
 }

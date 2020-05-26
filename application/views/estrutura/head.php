@@ -11,7 +11,7 @@ $meta = array(
 	array('name' => 'Content-type', 'content' => 'text/html; charset=utf-8', 'type' => 'equiv'),
 	array('name' => 'copyright', 'content' => '&copy; '.date('Y').' Crosshost'),
 	array('name' => 'expires', 'content' => 'Mon, 22 Jul 2002 11:12:01 GMT', 'type' => 'equiv'),
-	array('name' => 'keywords', 'content' => 'gerente, desenvolvedor, programador, projetos, web, bando de dados, jquery, javascript, css, html, php, sql, avançado'),
+	array('name' => 'keywords', 'content' => 'gerente, desenvolvedor, programador, projetos, web, banco de dados, jquery, javascript, css, html, php, sql, avançado'),
 	array('name' => 'pragma', 'content' => 'no-cache', 'type' => 'equiv'),
 	array('name' => 'robots', 'content' => 'all'),
 	array('name' => 'googlebot', 'content' => 'noarchive'),
