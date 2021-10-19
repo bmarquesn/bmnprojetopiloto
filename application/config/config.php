@@ -23,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-if($_SERVER['SERVER_NAME'] === "localhost") {
+if($_SERVER['REMOTE_ADDR'] === "127.0.0.1") {
 	define("SERVIDOR", "local");
-	$config['base_url'] = 'http://localhost:8080/bmnprojetopiloto/';
+	$config['base_url'] = 'http://bmnprojetopiloto.test/';
 } else {
 	define("SERVIDOR", "remoto");
 	$config['base_url'] = 'http://www.bmnprojetopiloto.com.br';
